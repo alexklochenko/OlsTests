@@ -18,8 +18,10 @@ public class Main {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         AuthFileKey afk=new AuthFileKey();
+        ChangeRole chr=new ChangeRole();
 
         afk.AuthWithTestKndpKey(driver, wait,  Credentials.PassForTestKndpTov12Dir, Credentials.WayForKeyForTestKndpTov12Die) ;
+        chr.UseClientRole(driver, wait, 30);
 //        OpenGoogle.OpenSetClick();
 //        OLSOpen.OLStest();
 //        org.example.CheckHeadersLinks.Test();

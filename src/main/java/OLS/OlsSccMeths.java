@@ -13,21 +13,27 @@ import java.time.Duration;
 
     public class OlsSccMeths
 {
-//    Find and Click
+
+
+
+//    Find and Click Css
     public static void FindByCssAndClick(String locator, WebDriver driver)
     {
         WebElement element=driver.findElement(By.cssSelector(locator));
         element.click();
     }
 
-    //    Find and Set
+    //    Find and Set Css
     public static void FindByCssAndSet(String locator, WebDriver driver, String data)
     {
         WebElement element=driver.findElement(By.cssSelector(locator));
         element.sendKeys(data);
     }
 
-    //    Wating
+
+
+
+    //    Wating Css
     public static void WaitingElementToBeClickableByCss(WebDriverWait wait, WebDriver driver, String locator, int seconds)
     {
         wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
@@ -59,5 +65,33 @@ import java.time.Duration;
     }
 
 
+
+
+
+// Xpath
+    public static void FindByXpathAndClick(String locator, WebDriver driver)
+{
+    WebElement element=driver.findElement(By.xpath(locator));
+    element.click();
+}
+
+    //    Find and Set Css
+    public static void FindByXpathAndSet(String locator, WebDriver driver, String data)
+    {
+        WebElement element=driver.findElement(By.xpath(locator));
+        element.sendKeys(data);
+    }
+
+
+
+
+
+
+    //    Wating Xpath
+    public static void WaitingElementToBeClickableByXpath(WebDriverWait wait, WebDriver driver, String locator, int seconds)
+    {
+        wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator)));
+    }
 
 }

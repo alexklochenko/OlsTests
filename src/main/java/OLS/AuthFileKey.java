@@ -43,6 +43,11 @@ public class AuthFileKey
         }
 
 //        Choose KNDP DropDownList
+        try {
+            OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver,OlsVarables.KNDPDropDownList, 10);
+        } catch (TimeoutException e) {
+            System.out.println("не нашло випадающий список");
+        }
         OlsSccMeths.FindByCssAndClick(OlsVarables.KNDPDropDownList, driver);
 
 //        Choose type of KNDP
