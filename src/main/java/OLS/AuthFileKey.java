@@ -19,7 +19,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class AuthFileKey
 {
 
-    public void AuthWithTestKndpKey (WebDriver driver, WebDriverWait wait) {
+    public void AuthWithTestKndpKey (WebDriver driver, WebDriverWait wait, String PasswordForKey, String WayToKey) {
         driver.get("https://ols-test.am-soft.ua/ols.test");
 
 //        Close Ми використовуємо Сookie
@@ -49,7 +49,7 @@ public class AuthFileKey
         OlsSccMeths.FindByCssAndClick(OlsVarables.KNDPDropDownListTestKNDP, driver);
 
 //        Set pass
-        OlsSccMeths.FindByCssAndSet(OlsVarables.PasswordInputFild, driver, OlsVarables.UserKeyPass);
+        OlsSccMeths.FindByCssAndSet(OlsVarables.PasswordInputFild, driver, PasswordForKey);
 
 //        CheckboxRememberPasswordForSession
         OlsSccMeths.FindByCssAndClick(OlsVarables.CheckboxRememberPasswordForSession, driver);
@@ -57,7 +57,7 @@ public class AuthFileKey
 //        Get key
         OlsSccMeths.FindByCssAndClick(OlsVarables.ChooseFileFromPc, driver);
         try {
-            OlsSccMeths.ChooseFileFromPC(OlsVarables.ChooseFileFromPC);
+            OlsSccMeths.ChooseFileFromPC(WayToKey);
         } catch (AWTException e) {
             System.out.println("Problem with export key-6.dat");
         }

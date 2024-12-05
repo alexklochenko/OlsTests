@@ -2,8 +2,7 @@ package OLS;
 
 public class OlsVarables
 {
-    public static String UserKeyPass="1qaz2wsx";
-    public static String ChooseFileFromPC="C:\\Users\\oleks\\OneDrive\\Документи\\Tools_setup\\IDEA_Projects\\OLSAutoTests\\src\\main\\resources\\Key-6.dat";
+
     public static String OrgNameFromCert="ТОВ \"Дванадцять\"";
 
 

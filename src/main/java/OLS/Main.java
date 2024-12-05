@@ -19,7 +19,7 @@ public class Main {
 
         AuthFileKey afk=new AuthFileKey();
 
-        afk.AuthWithTestKndpKey(driver, wait);
+        afk.AuthWithTestKndpKey(driver, wait,  Credentials.PassForTestKndpTov12Dir, Credentials.WayForKeyForTestKndpTov12Die) ;
 //        OpenGoogle.OpenSetClick();
 //        OLSOpen.OLStest();
 //        org.example.CheckHeadersLinks.Test();
