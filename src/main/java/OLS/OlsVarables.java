@@ -20,7 +20,12 @@ public class OlsVarables
 
 // Client
     public static String SineActModalWind="div.modal-content[uib-modal-transclude]";
-    public static String SineActModalWindDisagreeButton="div.modal-content[uib-modal-transclude]";
+    public static String SineActModalWindDisagreeButton="button.btn.btn-danger.ng-binding[ng-click='cancel()']";
+    public static String addButton="div.text-right.min a.btn.btn-success.btn-teal-dk.create-order-btn.ng-scope span.fa.fa-folder.fa-stack-2x";
+    public static String MyDocsButtonAtFiltr="a[data-ui-sref='app.customerdocs'] span.font-bold";
+    public static String MyDocsListFirstDocCheck="table#tableForSign tbody tr:nth-child(1) td:nth-child(1) > strong.ng-binding:first-of-type";
+    public static String MyDocsListFirstDocSignButton="table#tableForSign tbody tr:nth-child(1) td:nth-child(3) >a.doc-btn:first-of-type";
+    public static String MyDocsListFirstDocSignButtonOnModalView="table#tableForSign tbody tr:nth-child(1) td:nth-child(3) >a.doc-btn:first-of-type";
 
 
 
@@ -31,5 +36,7 @@ public class OlsVarables
 // Client
 
     public static String ArtOfficeLicemseBlock="//div[@class='panel-footer text-center bg-primary bg-teal']//h4//strong[contains(text(), 'Арт-Офіс')]";
+//    public static String MyDocsListFirstDocCheck="//*[@id=\"tableForSign\"]/tbody/tr[1]/td[1]/strong[1]";
+
 
 }

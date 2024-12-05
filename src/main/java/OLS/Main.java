@@ -19,9 +19,12 @@ public class Main {
 
         AuthFileKey afk=new AuthFileKey();
         ChangeRole chr=new ChangeRole();
+        ClientCabinet bnl=new ClientCabinet();
 
         afk.AuthWithTestKndpKey(driver, wait,  Credentials.PassForTestKndpTov12Dir, Credentials.WayForKeyForTestKndpTov12Die) ;
         chr.UseClientRole(driver, wait, 30);
+//        bnl.BuyMaoTransactions(driver, wait);
+        bnl.SignMyDocs(driver, wait);
 //        OpenGoogle.OpenSetClick();
 //        OLSOpen.OLStest();
 //        org.example.CheckHeadersLinks.Test();
