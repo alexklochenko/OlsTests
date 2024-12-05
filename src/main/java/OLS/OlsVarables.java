@@ -18,6 +18,9 @@ public class OlsVarables
     public static String CheckInfoFromCert="span.block.m-t-sm strong.font-bold.text-lt.ng-binding";
     public static String RoleDropDownList="li.dropdown.ng-scope[is-open='role.isopen']";
 
+// Client
+    public static String SineActModalWind="div.modal-content[uib-modal-transclude]";
+    public static String SineActModalWindDisagreeButton="div.modal-content[uib-modal-transclude]";
 
 
 
@@ -25,8 +28,8 @@ public class OlsVarables
 //    Xpath
     public static String ClientRoleFromDropDownList="(//li[@class='ng-scope']//a[contains(text(), 'Клієнт')])[2]";
 
+// Client
 
-
-
+    public static String ArtOfficeLicemseBlock="//div[@class='panel-footer text-center bg-primary bg-teal']//h4//strong[contains(text(), 'Арт-Офіс')]";
 
 }
