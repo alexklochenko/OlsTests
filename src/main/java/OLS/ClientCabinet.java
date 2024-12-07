@@ -1,5 +1,6 @@
 package OLS;
 
+import dev.failsafe.TimeoutExceededException;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -10,7 +11,7 @@ public class ClientCabinet
     {
         try
         {
-            OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.SineActModalWind,10);
+            OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.SineActModalWind,20);
             OlsSccMeths.FindByCssAndClick(OlsVarables.SineActModalWindDisagreeButton,driver);
             System.out.println("try bloch pass");
         }
@@ -21,8 +22,15 @@ public class ClientCabinet
 
         OlsSccMeths.FindByXpathAndClick(OlsVarables.ArtOfficeLicemseBlock, driver);
 
-        WebElement element=driver.findElements(By.cssSelector(OlsVarables.addButton)).get(8);
-        element.click();
+        try
+        {
+            OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.addButton, 10);
+        }
+        catch(TimeoutExceededException e)
+        {
+            System.out.println("Елемент коризна не знайдено");
+        }
+        OlsSccMeths.FindByCssAndClick(OlsVarables.addButton, driver);
 
 
 

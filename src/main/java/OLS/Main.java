@@ -23,8 +23,8 @@ public class Main {
 
         afk.AuthWithTestKndpKey(driver, wait,  Credentials.PassForTestKndpTov12Dir, Credentials.WayForKeyForTestKndpTov12Die) ;
         chr.UseClientRole(driver, wait, 30);
-//        bnl.BuyMaoTransactions(driver, wait);
-        bnl.SignMyDocs(driver, wait);
+        bnl.BuyMaoTransactions(driver, wait);
+//        bnl.SignMyDocs(driver, wait);
 //        OpenGoogle.OpenSetClick();
 //        OLSOpen.OLStest();
 //        org.example.CheckHeadersLinks.Test();

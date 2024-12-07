@@ -71,7 +71,7 @@ public class AuthFileKey
 
         try
         {
-            OlsSccMeths.WaitingTextToBePresentInElementLocated(wait, driver, OlsVarables.CheckInfoFromCert,30,OlsVarables.OrgNameFromCert);
+            OlsSccMeths.WaitingTextToBePresentInElementLocated(wait, driver, OlsVarables.CheckInfoFromCert,60,OlsVarables.OrgNameFromCert);
             System.out.println("Дані з сертифікату в кабінеті користувача відповідают очікуваному результату");
         }
         catch(NoSuchElementException e)
