@@ -51,6 +51,7 @@ public class AuthFileKey
         OlsSccMeths.FindByCssAndClick(OlsVarables.KNDPDropDownList, driver);
 
 //        Choose type of KNDP
+        OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.KNDPDropDownListTestKNDP, 10);
         OlsSccMeths.FindByCssAndClick(OlsVarables.KNDPDropDownListTestKNDP, driver);
 
 //        Set pass

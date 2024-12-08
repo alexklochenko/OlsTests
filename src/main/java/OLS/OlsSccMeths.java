@@ -30,6 +30,34 @@ import java.time.Duration;
         element.sendKeys(data);
     }
 
+//    Find and Click Css
+    public static void FindByCssAndClear(WebDriver driver, String locator)
+    {
+        WebElement element=driver.findElement(By.cssSelector(locator));
+        element.clear();
+
+    }
+
+
+    //    Find and Click Css
+
+    public static void FindByCssAndCheckText(WebDriver driver, String locator, String CheckText)
+    {
+        WebElement element=driver.findElement(By.cssSelector(locator));
+        String textFronElement=element.getText();
+        if(textFronElement.equals(CheckText))
+        {
+            System.out.println("Перевірка відбулась успішно. Дані що відображаються на екрані - " + CheckText);
+        }
+        else
+        {
+            System.out.println("Перевірка " + CheckText + " відбулась Помилково.");
+        }
+
+    }
+
+
+
 
 
 
@@ -81,6 +109,8 @@ import java.time.Duration;
         WebElement element=driver.findElement(By.xpath(locator));
         element.sendKeys(data);
     }
+
+
 
 
 
