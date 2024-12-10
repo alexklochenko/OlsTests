@@ -37,7 +37,7 @@ public class AuthFileKey
 
 //        Check that initialization is complete
         try {
-            OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.PasswordInputFild, 30);
+            OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.PasswordInputField, 30);
         } catch (ElementClickInterceptedException e) {
             System.out.println("initialization was not complete in 30 seconds");
         }
@@ -55,7 +55,7 @@ public class AuthFileKey
         OlsSccMeths.FindByCssAndClick(OlsVarables.KNDPDropDownListTestKNDP, driver);
 
 //        Set pass
-        OlsSccMeths.FindByCssAndSet(OlsVarables.PasswordInputFild, driver, PasswordForKey);
+        OlsSccMeths.FindByCssAndSet(OlsVarables.PasswordInputField, driver, PasswordForKey);
 
 //        CheckboxRememberPasswordForSession
         OlsSccMeths.FindByCssAndClick(OlsVarables.CheckboxRememberPasswordForSession, driver);
@@ -72,7 +72,7 @@ public class AuthFileKey
 
         try
         {
-            OlsSccMeths.WaitingTextToBePresentInElementLocated(wait, driver, OlsVarables.CheckInfoFromCert,60,OlsVarables.OrgNameFromCert);
+            OlsSccMeths.WaitingTextToBePresentInElementLocated(wait, driver, OlsVarables.CheckInfoFromCert,90,OlsVarables.OrgNameFromCert);
             System.out.println("Дані з сертифікату в кабінеті користувача відповідают очікуваному результату");
         }
         catch(NoSuchElementException e)

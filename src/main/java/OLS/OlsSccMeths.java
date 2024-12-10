@@ -68,6 +68,16 @@ import java.time.Duration;
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(locator)));
     }
 
+    public static void WaitingElementToBeInvisibilityByCss(WebDriverWait wait, WebDriver driver, String locator, int seconds)
+    {
+        wait=new WebDriverWait(driver, Duration.ofSeconds(seconds));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(locator)));
+    }
+
+
+
+
+
     public static void WaitingTextToBePresentInElementLocated(WebDriverWait wait, WebDriver driver, String locator, int seconds, String text)
     {
         wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
