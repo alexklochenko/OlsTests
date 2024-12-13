@@ -1,6 +1,7 @@
 package OLS;
 
 import dev.failsafe.TimeoutExceededException;
+import dev.failsafe.internal.TimeoutExecutor;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -36,6 +37,7 @@ public class ClientCabinet
         OlsSccMeths.FindByCssAndClick(OlsVarables.addButton, driver);
 
 //        Start Step1
+        System.out.println("----Start Step 11----");
 
         OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.TrinsactionMaoCountOfDocsToBy, 10);
 
@@ -57,10 +59,13 @@ public class ClientCabinet
         OlsSccMeths.FindByCssAndClick(OlsVarables.Step11ButtonNextStep, driver);
 
 //      Start Step 2
+        System.out.println("----Start Step 21----");
 
+        System.out.println("- Перевірка коду ЕДРПОУ, що було введено на попередньому кроці:");
         OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.Step21EdrpouCode, 10 );
         OlsSccMeths.FindByCssAndCheckText(driver, OlsVarables.Step21EdrpouCode, OlsVarables.CodeEdrpouForYOV12);
 
+        System.out.println("- Перевірка назви підприємства, що було введено на попередньому кроці:");
         OlsSccMeths.FindByCssAndCheckText(driver, OlsVarables.Step21OrgName, OlsVarables.OrgNameFromStep21);
 
 //        OlsSccMeths.FindByCssAndClick(OlsVarables.Step21OccupType, driver);
@@ -93,6 +98,7 @@ public class ClientCabinet
         OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.Step21PostAdressChange, 10);
         OlsSccMeths.FindByCssAndClick(OlsVarables.Step21PostAdressChange, driver);
 
+        System.out.println("- Перевірка назви міста, що було введено попередньо:");
         OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.Step21YoAdressSetModalRegionValue, 10);
         OlsSccMeths.FindByCssAndCheckText(driver, OlsVarables.Step21YoAdressSetModalRegionValue,OlsVarables.Step21PostAdresssSetModalRegion );
 
@@ -134,11 +140,19 @@ public class ClientCabinet
         OlsSccMeths.FindByCssAndClick(OlsVarables.Step21GetNextStep, driver);
 
 //      Start Step 3
+        System.out.println("----Start Step 32----");
 
         try
         {
             OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.Step32CheckText,60);
-            OlsSccMeths.FindByCssAndCheckText(driver, OlsVarables.Step32CheckText, OlsVarables.Step32CheckTextValidResalt);
+            String resalt=OlsSccMeths.FindByCssAndCheckTextReturnText(driver, OlsVarables.Step32CheckText, OlsVarables.Step32CheckTextValidResalt);
+            System.out.println("Text on display - "+resalt);
+            if (resalt.equals("Крок 3: Завантажте необхідні документи"))
+            {
+//                OlsSccMeths.WaitingTextToBePresentInElementLocated(wait, driver, OlsVarables.Step32CheckTextDiscription,60, OlsVarables.Step32CheckTextDiscriptionValidResalt );
+                  OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.Step32CheckTextDiscription, 60);
+                System.out.println("this part successfully was done ");
+            }
         }
         catch(TimeoutException e)
         {
@@ -149,7 +163,32 @@ public class ClientCabinet
             System.out.println("Перехід на крок 32 відбувся невдало по Елементу");
         }
 
+//      Start Step 3
+        System.out.println("----Start Step 33----");
 
+        try
+        {
+            OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.Step33ModalWarningForPayment, 600);
+        }
+        catch(TimeoutException tout)
+        {
+            try
+            {
+                OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.Step32Limit20MinutesAppeared, 600);
+            }
+            catch (TimeoutException e)
+            {
+                System.out.println("Замовлення не перейшло на крок 33. Текст про необхідність звернутись на техпідтримку - НЕ відображається");
+                System.out.println("Критична помилка. Подальша обробка замовлення - НЕ можлива. ");
+                return;
+            }
+            System.out.println("Формування документы НЕ відбулось в автоматичному режимі. Інформація про необхідність звернутись у техпідтримку - відображається валідно");
+            return;
+        }
+
+
+
+//        System.out.println("мы добрались сюда)))");
 
 
 

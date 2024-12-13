@@ -14,8 +14,6 @@ import java.time.Duration;
     public class OlsSccMeths
 {
 
-
-
 //    Find and Click Css
     public static void FindByCssAndClick(String locator, WebDriver driver)
     {
@@ -23,7 +21,7 @@ import java.time.Duration;
         element.click();
     }
 
-    //    Find and Set Css
+//    Find and Set Css
     public static void FindByCssAndSet(String locator, WebDriver driver, String data)
     {
         WebElement element=driver.findElement(By.cssSelector(locator));
@@ -38,13 +36,12 @@ import java.time.Duration;
 
     }
 
-
     //    Find and Click Css
-
     public static void FindByCssAndCheckText(WebDriver driver, String locator, String CheckText)
     {
         WebElement element=driver.findElement(By.cssSelector(locator));
         String textFronElement=element.getText();
+
         if(textFronElement.equals(CheckText))
         {
             System.out.println("Перевірка відбулась успішно. Дані що відображаються на екрані - " + CheckText);
@@ -54,12 +51,27 @@ import java.time.Duration;
             System.out.println("Перевірка " + CheckText + " відбулась Помилково.");
         }
 
+
     }
 
 
+    public static String FindByCssAndCheckTextReturnText(WebDriver driver, String locator, String CheckText)
+    {
+        WebElement element=driver.findElement(By.cssSelector(locator));
+        String textFronElement=element.getText();
 
+        if(textFronElement.equals(CheckText))
+        {
+            System.out.println("Перевірка відбулась успішно. Дані що відображаються на екрані - " + CheckText);
+        }
+        else
+        {
+            System.out.println("Перевірка " + CheckText + " відбулась Помилково.");
+        }
 
+        return textFronElement;
 
+    }
 
     //    Wating Css
     public static void WaitingElementToBeClickableByCss(WebDriverWait wait, WebDriver driver, String locator, int seconds)
@@ -73,10 +85,6 @@ import java.time.Duration;
         wait=new WebDriverWait(driver, Duration.ofSeconds(seconds));
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(locator)));
     }
-
-
-
-
 
     public static void WaitingTextToBePresentInElementLocated(WebDriverWait wait, WebDriver driver, String locator, int seconds, String text)
     {

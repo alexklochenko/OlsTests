@@ -77,7 +77,13 @@ public class OlsVarables
     public static String Step21GetNextStep="button.btn.btn-success.btn-next.ng-binding";
     public static String Step32CheckText="div.col-sm-12.col-xs-12 h2.m-n.font-thin.h2.text-black.ng-scope";
     public static String Step32CheckTextValidResalt="Крок 3: Формування документів";
+    public static String Step32CheckTextDiscription="div.col-sm-12.col-xs-12 h4.m-n.font-thin.h4.text-black.ng-scope";
+
     public static String Step32Limit20MinutesAppeared="div.col-sm-12.col-xs-12 h4.m-n.font-thin.h4.text-black:nth-child(2)";
+    public static String Step33ModalWarningForPayment="div.modal-content";
+
+
+
 
 
 
