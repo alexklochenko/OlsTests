@@ -2,6 +2,7 @@ package OLS;
 
 import dev.failsafe.TimeoutExceededException;
 import dev.failsafe.internal.TimeoutExecutor;
+import org.junit.platform.commons.function.Try;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,14 +18,14 @@ public class ClientCabinet
         {
             OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.SineActModalWind,20);
             OlsSccMeths.FindByCssAndClick(OlsVarables.SineActModalWindDisagreeButton,driver);
-            System.out.println("try bloch pass");
         }
         catch(TimeoutException e)
         {
             System.out.println("У Вас в системі відсутні Акти або Заяви приєднання що вимагають підписання");
         }
 
-        OlsSccMeths.FindByXpathAndClick(OlsVarables.ArtOfficeLicemseBlock, driver);
+
+        OlsSccMeths.FindByCssAndClick(OlsVarables.ArtOfficeLicenseBlockCss, driver);
 
         try
         {
@@ -163,8 +164,7 @@ public class ClientCabinet
             System.out.println("Перехід на крок 32 відбувся невдало по Елементу");
         }
 
-//      Start Step 3
-        System.out.println("----Start Step 33----");
+// check the formation of documents
 
         try
         {
@@ -186,9 +186,38 @@ public class ClientCabinet
             return;
         }
 
+//      Start Step 3
+        System.out.println("----Start Step 33----");
+
+        OlsSccMeths.FindByCssAndClick(OlsVarables.Step33ModalWarningForPaymentOkButton, driver);
+
+        OlsSccMeths.WaitingElementToBeInvisibilityByCss(wait, driver, OlsVarables.Step33ModalWarningForPayment, 10);
+        OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.Step33ViewDocButton, 30);
+        OlsSccMeths.FindByCssAndClick(OlsVarables.Step33ViewDocButton, driver);
+
+        try
+        {
+            OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.Step33ViewModalCheckClientSlotAppear, 60);
+            try
+            {
+                OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.Step33ViewModalCheckClientTextZayavaPriednannyaApper, 60);
+            }
+            catch(TimeoutException t)
+            {
+                System.out.println("Не валідне відображення документа. Заява приєднання при перегляді відображається не коректно");
+            }
+        }
+        catch(TimeoutException e)
+        {
+            System.out.println("При перешляді заяви приєднання, модальне вікно перегляду не відобажається");
+        }
+
+        OlsSccMeths.FindByCssAndClick(OlsVarables.Step33ViewModalViewDocCloseButton, driver);
 
 
-//        System.out.println("мы добрались сюда)))");
+
+
+        System.out.println("мы добрались сюда)))");
 
 
 

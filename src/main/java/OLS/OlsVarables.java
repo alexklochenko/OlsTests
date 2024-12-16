@@ -38,6 +38,7 @@ public class OlsVarables
 // Client
     public static String SineActModalWind="div.modal-content[uib-modal-transclude]";
     public static String SineActModalWindDisagreeButton="button.btn.btn-danger.ng-binding[ng-click='cancel()']";
+    public static String ArtOfficeLicenseBlockCss="div.wrapper-sm.row.bg-light.m-l-none.m-r-none.m-t-n-sm.sm_screen div[data-ng-repeat='item in displayedProductsCollection']:nth-child(2) div.product-item.panel.b-a";
     public static String addButton="div.productBlock.ng-scope:nth-child(17) a[data-ng-if='isInCustomerRole()'].btn.btn-success.btn-teal-dk.create-order-btn.ng-scope";
     public static String MyDocsButtonAtFiltr="a[data-ui-sref='app.customerdocs'] span.font-bold";
     public static String MyDocsListFirstDocCheck="table#tableForSign tbody tr:nth-child(1) td:nth-child(1) > strong.ng-binding:first-of-type";
@@ -81,6 +82,11 @@ public class OlsVarables
 
     public static String Step32Limit20MinutesAppeared="div.col-sm-12.col-xs-12 h4.m-n.font-thin.h4.text-black:nth-child(2)";
     public static String Step33ModalWarningForPayment="div.modal-content";
+    public static String Step33ModalWarningForPaymentOkButton="div.modal-footer button.btn.btn-primary";
+    public static String Step33ViewDocButton="tbody tr:nth-child(1) td:nth-child(3) a.doc-btn:nth-child(3) i.fa.fa-eye.fa-fw";
+    public static String Step33ViewModalCheckClientSlotAppear="div[data-ng-if='documentModel.State !== 1'] div.text-center.panel.bg-black.group-name-panel";
+    public static String Step33ViewModalCheckClientTextZayavaPriednannyaApper="div#viewerContainer";
+    public static String Step33ViewModalViewDocCloseButton="div.modal-footer.ng-scope button.btn.btn-default.ng-scope";
 
 
 
@@ -99,10 +105,6 @@ public class OlsVarables
 //    Xpath
     public static String ClientRoleFromDropDownList="(//li[@class='ng-scope']//a[contains(text(), 'Клієнт')])[2]";
 
-// Client
-
-    public static String ArtOfficeLicemseBlock="//div[@class='panel-footer text-center bg-primary bg-teal']//h4//strong[contains(text(), 'Арт-Офіс')]";
-//    public static String MyDocsListFirstDocCheck="//*[@id=\"tableForSign\"]/tbody/tr[1]/td[1]/strong[1]";
 
 
 }
