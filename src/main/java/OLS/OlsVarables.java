@@ -88,6 +88,8 @@ public class OlsVarables
     public static String Step33ViewModalCheckClientTextZayavaPriednannyaApper="div#viewerContainer";
     public static String Step33ViewModalViewDocCloseButton="div.modal-footer.ng-scope button.btn.btn-default.ng-scope";
 
+//    locators in a fame
+    public static String Step33CheckTextZayavaPriednannya="div.textLayer div[style='left: 270.538px; top: 26.0494px; font-size: 11.6404px; font-family: sans-serif; transform: scaleX(1.02716);']";
 
 
 

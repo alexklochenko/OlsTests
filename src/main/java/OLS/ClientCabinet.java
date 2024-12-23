@@ -150,9 +150,8 @@ public class ClientCabinet
             System.out.println("Text on display - "+resalt);
             if (resalt.equals("Крок 3: Завантажте необхідні документи"))
             {
-//                OlsSccMeths.WaitingTextToBePresentInElementLocated(wait, driver, OlsVarables.Step32CheckTextDiscription,60, OlsVarables.Step32CheckTextDiscriptionValidResalt );
-                  OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.Step32CheckTextDiscription, 60);
-                System.out.println("this part successfully was done ");
+                OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.Step32CheckTextDiscription, 60);
+                System.out.println("- Замовлення знаходиться на фроці Формування документів. Інформатиноий тест про необхідність очікування на формування документів відображається валідно.");
             }
         }
         catch(TimeoutException e)
@@ -200,7 +199,22 @@ public class ClientCabinet
             OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.Step33ViewModalCheckClientSlotAppear, 60);
             try
             {
+                WebElement modalWindow = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".modal-dialog")));
+                WebElement frameElement = modalWindow.findElement(By.tagName("iframe"));
+                driver.switchTo().frame(frameElement);
                 OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.Step33ViewModalCheckClientTextZayavaPriednannyaApper, 60);
+                System.out.println("- Бланк заяви приєднання відображається успішно.");
+
+                System.out.println("- Перевірка заголовка друкованої форми ");
+                OlsSccMeths.FindByCssAndCheckText(driver, OlsVarables.Step33CheckTextZayavaPriednannya, "ЗАЯВА-ПРИЄДНАННЯ");
+
+
+
+
+
+
+
+                driver.switchTo().defaultContent();
             }
             catch(TimeoutException t)
             {
