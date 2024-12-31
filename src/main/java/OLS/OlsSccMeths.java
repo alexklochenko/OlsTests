@@ -1,6 +1,7 @@
 package OLS;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -115,6 +116,18 @@ import java.time.Duration;
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector(locator), text));
     }
 
+    public  static void WaitingElementToBePresentOnThePage(WebDriver driver, String locator, int time)
+    {
+            WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(time));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(locator)));
+    }
+
+
+
+
+
+
+
     //  Choose filefrom PC
     public static void ChooseFileFromPC(String WayToPKey) throws AWTException
     {
@@ -132,6 +145,8 @@ import java.time.Duration;
         robot.keyRelease(KeyEvent.VK_ENTER);
         robot.delay(2000);
     }
+
+
 
 
 

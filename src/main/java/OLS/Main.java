@@ -17,23 +17,24 @@ public class Main {
         driver.manage().window().setSize(size);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        AuthFileKey afk=new AuthFileKey();
-        ChangeRole chr=new ChangeRole();
-        ClientCabinet bnl=new ClientCabinet();
-        Сryptotest crt=new Сryptotest();
 
+//        AuthFileKey afk=new AuthFileKey();
 //        afk.AuthWithTestKndpKey(driver, wait,  Credentials.PassForTestKndpTov12Dir, Credentials.WayForKeyForTestKndpTov12Die) ;
+//        ChangeRole chr=new ChangeRole();
 //        chr.UseClientRole(driver, wait, 30);
+//        ClientCabinet bnl=new ClientCabinet();
 //        bnl.BuyMaoTransactions(driver, wait);
-//        bnl.SignMyDocs(driver, wait);
-//        OpenGoogle.OpenSetClick();
-//        OLSOpen.OLStest();
-//        org.example.CheckHeadersLinks.Test();
 
-//
-//        AuthOLS.MkKey();
-//        AuthOLS.DpsKey();
-        crt.СryptotestWithFileKey(driver, wait);
+//        bnl.SignMyDocs(driver, wait);
+
+
+
+        CheckMainPage cmp=new CheckMainPage();
+        cmp.CheckSalePage(driver, wait);
+        cmp.CheckAboutAsPage(driver, wait);
+
+//        Сryptotest crt=new Сryptotest();
+//        crt.СryptotestWithFileKey(driver, wait);
 
     }
 }

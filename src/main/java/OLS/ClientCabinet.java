@@ -151,7 +151,7 @@ public class ClientCabinet
             if (resalt.equals("Крок 3: Завантажте необхідні документи"))
             {
                 OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.Step32CheckTextDiscription, 60);
-                System.out.println("- Замовлення знаходиться на фроці Формування документів. Інформатиноий тест про необхідність очікування на формування документів відображається валідно.");
+                System.out.println("- Замовлення знаходиться на кроці Формування документів. Інформатиноий тест про необхідність очікування на формування документів відображається валідно.");
             }
         }
         catch(TimeoutException e)
@@ -206,6 +206,7 @@ public class ClientCabinet
                 System.out.println("- Бланк заяви приєднання відображається успішно.");
 
                 System.out.println("- Перевірка заголовка друкованої форми ");
+                OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.Step33CheckTextZayavaPriednannya, 60);
                 OlsSccMeths.FindByCssAndCheckText(driver, OlsVarables.Step33CheckTextZayavaPriednannya, "ЗАЯВА-ПРИЄДНАННЯ");
 
 
@@ -226,7 +227,7 @@ public class ClientCabinet
             System.out.println("При перешляді заяви приєднання, модальне вікно перегляду не відобажається");
         }
 
-        OlsSccMeths.FindByCssAndClick(OlsVarables.Step33ViewModalViewDocCloseButton, driver);
+        OlsSccMeths.WaitingElementToBePresentOnThePage(driver, OlsVarables.Step33ViewModalViewDocCloseButton, 30  );
 
 
 
