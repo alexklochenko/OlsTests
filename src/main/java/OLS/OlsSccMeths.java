@@ -73,7 +73,30 @@ import java.time.Duration;
 
     }
 
-    //    Wating Css
+    public static String FindAndGetTextByCss(WebDriver driver, String locator)
+    {
+        WebElement element=driver.findElement(By.cssSelector(locator));
+        return element.getText();
+    }
+
+
+
+    public static void FindByCssAndSendKeys(String locator, WebDriver driver, String Keys)
+    {
+        WebElement element=driver.findElement(By.cssSelector(locator));
+        element.sendKeys(Keys);
+    }
+
+
+
+
+
+
+
+
+
+
+//    Wating Css
     public static void WaitingElementToBeClickableByCss(WebDriverWait wait, WebDriver driver, String locator, int seconds)
     {
         wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));

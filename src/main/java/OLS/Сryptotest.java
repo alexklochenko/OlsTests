@@ -1,120 +1,125 @@
 package OLS;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import com.sun.security.jgss.GSSUtil;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.sql.SQLOutput;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Сryptotest {
-    public static void Test(){
+    public  void СryptotestWithFileKey(WebDriver driver, WebDriverWait wait){
 
-        ChromeDriver driver2=new ChromeDriver();
+        driver.get("https://ols.am-soft.ua/account/authjs");
 
-        driver2.get("https://ols.am-soft.ua/account/authjs");
-
-//          close cooky popup
-        WebElement element=driver2.findElement(By.xpath("//*[@id=\"cookie\"]/div/div[3]/button"));
-        element.click();
-
-//          rundom click
-        for (int i=0; i<20; i++){
-            element=driver2.findElement(By.xpath("//*[@id=\"MainFormId\"]/div[2]/div[1]"));
-            element.click();
+        try
+        {
+            OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver,OlsVarFoeCryptoTest.CookysOkButton,10 );
+            OlsSccMeths.FindByCssAndClick(OlsVarFoeCryptoTest.CookysOkButton, driver);
         }
-//          find redirect on cryptotest
-        element=driver2.findElement(By.xpath("//*[@id=\"footer\"]/div[2]/div[3]"));
-        element.click();
-
-//          !!!!!!choose another TAB!!!!!!!
-        ArrayList<String> tabs = new ArrayList<>(driver2.getWindowHandles());
-        driver2.switchTo().window(tabs.get(tabs.size() - 1));
-
-//          find and choose Dps KNDP
-        element= driver2.findElement(By.xpath("//*[@id=\"acskType\"]/option[1]"));
-        element.click();
-
-
-//          find and click button "Choose Key file"
-        element=driver2.findElement(By.id("KeyFileName"));
-        element.sendKeys("C:\\Users\\oleks\\OneDrive\\Документи\\not for all\\Key\\ДПС_после_08_03\\Key-6.dat");
-
-//          rundom click
-        for (int i=0; i<20; i++){
-            element=driver2.findElement(By.xpath("/html/body/header/h1"));
-            element.click();
+        catch( TimeoutException e)
+        {
+            System.out.println("Погодження з використанням політики кукіс не потребувало");
         }
 
+        OlsSccMeths.FindByCssAndClick(OlsVarFoeCryptoTest.CheckButtonOnAuthPage, driver);
 
-//          find and set pass
-        element= driver2.findElement(By.xpath("//*[@id=\"passKeyFile\"]"));
-        element.click();
-        element.sendKeys("11223377");
-        element= driver2.findElement(By.xpath("//*[@id=\"btnReadKeyFile\"]"));
-        element.click();
+        ArrayList <String> list=new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(list.get(list.size()-1));
 
-//          find and set sign
-        element= driver2.findElement(By.xpath("//*[@id=\"btnSign\"]"));
-        element.click();
+        OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarFoeCryptoTest.CheckTxtOnCryptoPage ,20);
 
+        String JsLibVersion=OlsSccMeths.FindAndGetTextByCss(driver, OlsVarFoeCryptoTest.JsCryptoVersionArheader );
 
+        System.out.println("===================");
+        System.out.println("Версія клієнтської бібліотеки що використовується - "+JsLibVersion);
 
-
+        OlsSccMeths.FindByCssAndClick(OlsVarFoeCryptoTest.SelectFileTypeOfKeyCheck, driver);
 
 
-//      find and set fild "PIB"
-        element=driver2.findElement(By.xpath("//*[@id=\"fullname\"]"));
-        element.sendKeys("Клоченко Олександр Петрович");
+        boolean checkCaptcha=true;
+        do
+        {
+            OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarFoeCryptoTest.ChooseKeyFromFolderButton, 10 );
+            OlsSccMeths.FindByCssAndSendKeys(OlsVarFoeCryptoTest.ChooseKeyFromFolderButton, driver, Credentials.WayForOwnKey);
 
-//      find and set Email
-        element=driver2.findElement(By.xpath("//*[@id=\"email\"]"));
-        element.sendKeys("test@test.ua");
+            OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarFoeCryptoTest.InputFildForTestData, 5);
 
-//      find & set Phone num
-        element=driver2.findElement(By.id("phone"));
-        element.click();
-        element.sendKeys("0997779977");
+            OlsSccMeths.FindByCssAndSendKeys(OlsVarFoeCryptoTest.SendPass, driver, Credentials.PassForOwnKey);
 
-//      find & set Comment
-        element= driver2.findElement(By.xpath("//*[@id=\"comment\"]"));
-        element.sendKeys("automation pass crypto test");
+            OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarFoeCryptoTest.ClickToReadButton, 5);
+            OlsSccMeths.FindByCssAndClick(OlsVarFoeCryptoTest.ClickToReadButton, driver);
 
-//        find & set capcha
-        element= driver2.findElement(By.xpath("//*[@id=\"captcha_TB_I\"]"));
+            try
+            {
+                OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarFoeCryptoTest.CheckCertInfoForKeyFile, 10);
+                String FioFromCert=OlsSccMeths.FindAndGetTextByCss(driver, OlsVarFoeCryptoTest.CheckCertInfoForKeyFile);
+                System.out.println("ПІБ з сертифікату - "+FioFromCert);
+            }
+            catch(TimeoutException e)
+            {
+                System.out.println("За визначений час, ПІБ з сертифікату - не з'явилося на користувацькому інтерфейсі");
+                return;
+            }
+            catch(NotFoundException r)
+            {
+                System.out.println("Ключ користувача не зчитано.");
+                return;
+            }
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Введите данные для элемента captcha: ");
-        String captchaValue = scanner.nextLine();
+            OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarFoeCryptoTest.ClickToSignButton, 5);
+            OlsSccMeths.FindByCssAndClick(OlsVarFoeCryptoTest.ClickToSignButton, driver);
 
-        element.sendKeys(captchaValue);
+            OlsSccMeths.FindByCssAndSet(OlsVarFoeCryptoTest.InputFildForPib, driver,OlsVarFoeCryptoTest.DataForPibFild);
 
-//        find & set acsses
-        element= driver2.findElement(By.xpath("//*[@id=\"agreement\"]"));
-        element.click();
+            OlsSccMeths.FindByCssAndSet(OlsVarFoeCryptoTest.InputFildForEmail, driver,OlsVarFoeCryptoTest.DataForEmailFild);
 
+            OlsSccMeths.FindByCssAndSet(OlsVarFoeCryptoTest.InputFildForPhoneNumber, driver,OlsVarFoeCryptoTest.DataForPhoneNumberFild);
 
-        element= driver2.findElement(By.xpath("//*[@id=\"sendToBotBtn\"]"));
-        element.click();
+            OlsSccMeths.FindByCssAndSet(OlsVarFoeCryptoTest.InputFildForCmmentr, driver,OlsVarFoeCryptoTest.DataForCommentFild);
 
-        WebElement finalResalt=driver2.findElement(By.xpath("//*[@id=\"content\"]/div/div/div/form/div[3]"));
-        element=driver2.findElement(By.xpath("//*[@id=\"content\"]/div/div/div/form/div[3]"));
+            OlsSccMeths.FindByCssAndClick(OlsVarFoeCryptoTest.CheckBoxArgeement, driver);
 
-        if (element.equals(finalResalt)){
-            System.out.println("Сryptotest with Dps Key is OK");
-            WebElement jiraNum=driver2.findElement(By.xpath("//*[@id=\"content\"]/div/div/div/form/div[4]"));
-            String textForConsol = jiraNum.getText();
-            System.out.println(textForConsol);
+            Scanner scanner=new Scanner(System.in);
+            System.out.println("Введіть значення капчі для продовження тесту та натисніть Ентр:");
+            String captcha=scanner.nextLine();
+
+            OlsSccMeths.FindByCssAndSendKeys(OlsVarFoeCryptoTest.InputForCaptcha, driver, captcha);
+
+            OlsSccMeths.FindByCssAndClick(OlsVarFoeCryptoTest.ButtonSendToBot, driver);
+
+            try
+            {
+                OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarFoeCryptoTest.ErrorCaptcha, 5);
+                checkCaptcha=false;
+            }
+            catch(TimeoutException e)
+            {
+                checkCaptcha=true;
+            }
+
         }
-        else{
-            System.out.println("AuthOLS with Dps Key is faild");
-        }
+        while (checkCaptcha==false);
 
-//      close bouwser
-        driver2.quit();
+
+        OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver,OlsVarFoeCryptoTest.CheckResaltProtocolNumber, 30);
+        System.out.println(OlsSccMeths.FindAndGetTextByCss(driver, OlsVarFoeCryptoTest.CheckResaltProtocolNumber));
+
+        OlsSccMeths.FindByCssAndClick(OlsVarFoeCryptoTest.BackToMainpageButton,driver);
+
+        try
+        {
+            OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarFoeCryptoTest.CheckLogoOnMailPage,30);
+            System.out.println("Тест виконано успішно. Потокол надіслано в Jira");
+        }
+        catch(TimeoutException e)
+        {
+            System.out.println("Тест виконано безуспішно. Необхідно перевірити логи та виконати реран");
+        }
 
     }
 }

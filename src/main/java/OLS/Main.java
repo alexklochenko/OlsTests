@@ -20,10 +20,11 @@ public class Main {
         AuthFileKey afk=new AuthFileKey();
         ChangeRole chr=new ChangeRole();
         ClientCabinet bnl=new ClientCabinet();
+        Сryptotest crt=new Сryptotest();
 
-        afk.AuthWithTestKndpKey(driver, wait,  Credentials.PassForTestKndpTov12Dir, Credentials.WayForKeyForTestKndpTov12Die) ;
-        chr.UseClientRole(driver, wait, 30);
-        bnl.BuyMaoTransactions(driver, wait);
+//        afk.AuthWithTestKndpKey(driver, wait,  Credentials.PassForTestKndpTov12Dir, Credentials.WayForKeyForTestKndpTov12Die) ;
+//        chr.UseClientRole(driver, wait, 30);
+//        bnl.BuyMaoTransactions(driver, wait);
 //        bnl.SignMyDocs(driver, wait);
 //        OpenGoogle.OpenSetClick();
 //        OLSOpen.OLStest();
@@ -32,7 +33,7 @@ public class Main {
 //
 //        AuthOLS.MkKey();
 //        AuthOLS.DpsKey();
-//        Сryptotest.Test();
+        crt.СryptotestWithFileKey(driver, wait);
 
     }
 }
