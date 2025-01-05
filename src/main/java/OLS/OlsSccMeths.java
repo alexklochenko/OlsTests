@@ -80,6 +80,13 @@ import java.time.Duration;
         return element.getText();
     }
 
+//  Find Element and return value of fixed attribute
+    public static String FindAndGetValueOfAttributeByCss(WebDriver driver, String locator, String attribute )
+    {
+        WebElement element=driver.findElement(By.cssSelector(locator));
+        String AttribiteOfElement=element.getDomAttribute(attribute);
+        return AttribiteOfElement;
+    }
 
 
     public static void FindByCssAndSendKeys(String locator, WebDriver driver, String Keys)

@@ -14,7 +14,7 @@ public class CheckMainPage {
 
     public  void CheckSalePage(WebDriver driver, WebDriverWait wait)
     {
-        driver.get("https://ols.am-soft.ua/");
+        driver.get(Credentials.Environment);
         System.out.println("Логування статусів проходження тесту на сторінці Акції:");
 
         try
@@ -87,7 +87,7 @@ public class CheckMainPage {
 
     public  void CheckAboutAsPage(WebDriver driver, WebDriverWait wait)
     {
-        driver.get("https://ols.am-soft.ua/");
+        driver.get(Credentials.Environment);
         System.out.println("Логування статусів проходження тесту на сторінці Про нас:");
 
         try {
@@ -138,6 +138,98 @@ public class CheckMainPage {
 
     }
 
+    public void CheckContactsPage (WebDriver driver, WebDriverWait wait)
+    {
+        driver.get(Credentials.Environment);
+
+        System.out.println("Логування статусів проходження тесту на сторінці Контакти:");
+
+        try
+        {
+            OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver,OlsVarFoeCryptoTest.CookysOkButton,10 );
+            OlsSccMeths.FindByCssAndClick(OlsVarFoeCryptoTest.CookysOkButton, driver);
+        }
+        catch( TimeoutException e)
+        {
+            System.out.println(" - Погодження з використанням політики кукіс не потребувало");
+        }
+
+        OlsSccMeths.FindByCssAndClick(OlsVarMainPage.ContactsButtonOnMain, driver);
+
+        if ((OlsSccMeths.FindAndGetTextByCss(driver, OlsVarMainPage.AdressOnContactPsge)).equals(OlsVarMainPage.DcncAdress))
+        {
+            System.out.println(" - Перевірка юридичної адреси відбулась успішно");
+            System.out.println(OlsSccMeths.FindAndGetTextByCss(driver, OlsVarMainPage.AdressOnContactPsge));
+        }
+        else
+        {
+            System.out.println("УВАГА! Дані не відповідають дійсноті. Необхідновиконати ретест або перевірити інформацію на сайті");
+        }
+
+        if ((OlsSccMeths.FindAndGetTextByCss(driver, OlsVarMainPage.SchedulerOnContactPsge)).equals(OlsVarMainPage.WorkSchedule))
+        {
+            System.out.println(" - Перевірка графіку роботи  відбулась успішно");
+            System.out.println(OlsSccMeths.FindAndGetTextByCss(driver, OlsVarMainPage.SchedulerOnContactPsge));
+        }
+        else
+        {
+            System.out.println("УВАГА! Дані не відповідають дійсноті. Необхідновиконати ретест або перевірити інформацію на сайті");
+        }
+
+        if (
+                (OlsSccMeths.FindAndGetTextByCss(driver, OlsVarMainPage.VfNumberOnContactPsge)).equals(OlsVarMainPage.VfNumber) &&
+                (OlsSccMeths.FindAndGetTextByCss(driver, OlsVarMainPage.KsNumberOnContactPsge)).equals(OlsVarMainPage.KsNumber) &&
+                (OlsSccMeths.FindAndGetTextByCss(driver, OlsVarMainPage.LifeNumberOnContactPsge)).equals(OlsVarMainPage.LifeNumber) &&
+                (OlsSccMeths.FindAndGetTextByCss(driver, OlsVarMainPage.CityNumberOnContactPsge)).equals(OlsVarMainPage.CityNumber)
+           )
+        {
+            System.out.println(" - Перевірка контактних номерів телефону  відбулась успішно");
+            System.out.println(OlsSccMeths.FindAndGetTextByCss(driver, OlsVarMainPage.VfNumberOnContactPsge));
+            System.out.println(OlsSccMeths.FindAndGetTextByCss(driver, OlsVarMainPage.KsNumberOnContactPsge));
+            System.out.println(OlsSccMeths.FindAndGetTextByCss(driver, OlsVarMainPage.LifeNumberOnContactPsge));
+            System.out.println(OlsSccMeths.FindAndGetTextByCss(driver, OlsVarMainPage.CityNumberOnContactPsge));
+        }
+        else
+        {
+            System.out.println("УВАГА! Дані не відповідають дійсноті. Необхідновиконати ретест або перевірити інформацію на сайті");
+        }
+
+
+        if ((OlsSccMeths.FindAndGetTextByCss(driver, OlsVarMainPage.EmailOnContactPsge)).equals(OlsVarMainPage.Email))
+        {
+            System.out.println(" - Перевірка Email  відбулась успішно");
+            System.out.println(OlsSccMeths.FindAndGetTextByCss(driver, OlsVarMainPage.EmailOnContactPsge));
+        }
+        else
+        {
+            System.out.println("УВАГА! Дані не відповідають дійсноті. Необхідновиконати ретест або перевірити інформацію на сайті");
+        }
+
+        if
+        (
+        (OlsSccMeths.FindAndGetValueOfAttributeByCss(driver, OlsVarMainPage.LinkToBuyOnLineOnCotactPage, "href")).equals(OlsVarMainPage.LinkToBuyOnLine) &&
+        (OlsSccMeths.FindAndGetValueOfAttributeByCss(driver, OlsVarMainPage.LinkToSupportOnCotactPage, "href")).equals(OlsVarMainPage.LinkToSupport)
+        )
+        {
+            System.out.println(" - Перевірка посилань на сторінці  відбулась успішно");
+            System.out.println(OlsSccMeths.FindAndGetValueOfAttributeByCss(driver, OlsVarMainPage.LinkToBuyOnLineOnCotactPage, "href"));
+            System.out.println(OlsSccMeths.FindAndGetValueOfAttributeByCss(driver, OlsVarMainPage.LinkToSupportOnCotactPage, "href"));
+        }
+        else
+        {
+            System.out.println("УВАГА! Дані не відповідають дійсноті. Необхідновиконати ретест або перевірити інформацію на сайті");
+        }
+
+        try
+        {
+            OlsSccMeths.WaitingElementToBePresentOnThePage(driver, OlsVarMainPage.FooterContactInfo, 3);
+            System.out.println(" - Перевірка сторінки Контакти - відбулась успішно.");
+        }
+        catch(TimeoutException e)
+        {
+            System.out.println("Відсутня контактна інформація у футері");
+        }
+    }
 
 
 

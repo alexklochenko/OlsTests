@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class Сryptotest {
     public  void СryptotestWithFileKey(WebDriver driver, WebDriverWait wait){
 
-        driver.get("https://ols.am-soft.ua/account/authjs");
+        driver.get(Credentials.Environment);
 
         try
         {
@@ -26,10 +26,19 @@ public class Сryptotest {
             System.out.println("Погодження з використанням політики кукіс не потребувало");
         }
 
+        OlsSccMeths.FindByCssAndClick(OlsVarMainPage.EnterButtonOnMainPage, driver);
+
+        OlsSccMeths.WaitingElementToBePresentOnThePage(driver, OlsVarMainPage.EnterWithFileKeyOnMainPage, 5);
+        OlsSccMeths.FindByCssAndClick(OlsVarMainPage.EnterWithFileKeyOnMainPage, driver);
+
+        OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.EnterButtonAuthPage, 60);
         OlsSccMeths.FindByCssAndClick(OlsVarFoeCryptoTest.CheckButtonOnAuthPage, driver);
 
         ArrayList <String> list=new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(list.get(list.size()-1));
+
+
+        OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver,OlsVarFoeCryptoTest.InputFildForTestData, 60);
 
         OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarFoeCryptoTest.CheckTxtOnCryptoPage ,20);
 
