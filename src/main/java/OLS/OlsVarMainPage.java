@@ -39,8 +39,10 @@ public class OlsVarMainPage
     public static String LifeNumberOnContactPsge="div.container_contact__right div.contactus__contacts:nth-child(7) div.contactus__phoneNum>a";
     public static String CityNumberOnContactPsge="div.container_contact__right div.contactus__contacts:nth-child(8) div.contactus__phoneNum>a";
     public static String EmailOnContactPsge="div.contactus__phoneNumr>a";
-
     public static String LinkToBuyOnLineOnCotactPage="a[target='_blank'][rel='noopener']";
     public static String LinkToSupportOnCotactPage="div.container_contact__right a:nth-of-type(2)";
+    public static String PartnerButtonOnMain="ul.header__links.fadeInLeft.animated li.header__link:nth-of-type(5)";
+
+
 
 }

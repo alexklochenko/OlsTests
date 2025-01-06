@@ -28,12 +28,13 @@ public class Main {
     {
 
         CheckMainPage cmp=new CheckMainPage();
-        executeWithNewDriver( (driver,wait)-> cmp.CheckSalePage(driver, wait));
-        executeWithNewDriver( (driver,wait)-> cmp.CheckAboutAsPage(driver, wait));
-        executeWithNewDriver( (driver,wait)-> cmp.CheckContactsPage(driver, wait));
+//        executeWithNewDriver( (driver,wait)-> cmp.CheckSalePage(driver, wait));
+//        executeWithNewDriver( (driver,wait)-> cmp.CheckAboutAsPage(driver, wait));
+//        executeWithNewDriver( (driver,wait)-> cmp.CheckContactsPage(driver, wait));
+        executeWithNewDriver( (driver,wait)-> cmp.CheckPartnerPage(driver, wait));
 
-        Сryptotest crt=new Сryptotest();
-        executeWithNewDriver((driver, wait)->crt.СryptotestWithFileKey(driver, wait));
+//        Сryptotest crt=new Сryptotest();
+//        executeWithNewDriver((driver, wait)->crt.СryptotestWithFileKey(driver, wait));
 
 //        AuthFileKey afk=new AuthFileKey();
 //        afk.AuthWithTestKndpKey(driver, wait,  Credentials.PassForTestKndpTov12Dir, Credentials.WayForKeyForTestKndpTov12Die) ;

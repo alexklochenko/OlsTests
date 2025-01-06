@@ -231,6 +231,45 @@ public class CheckMainPage {
         }
     }
 
+    public void CheckPartnerPage (WebDriver driver, WebDriverWait wait)
+    {
+        driver.get(Credentials.Environment);
+
+
+        System.out.println("Логування статусів проходження тесту на сторінці Партнери:");
+
+        try
+        {
+            OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver,OlsVarFoeCryptoTest.CookysOkButton,10 );
+            OlsSccMeths.FindByCssAndClick(OlsVarFoeCryptoTest.CookysOkButton, driver);
+        }
+        catch( TimeoutException e)
+        {
+            System.out.println(" - Погодження з використанням політики кукіс не потребувало");
+        }
+
+        OlsSccMeths.FindByCssAndClick(OlsVarMainPage.PartnerButtonOnMain, driver);
+
+        try
+        {
+            ArrayList<String> array=new ArrayList<>(driver.getWindowHandles());
+            driver.switchTo().window(array.get(array.size()-1));
+
+            String CurrentUrl=driver.getCurrentUrl();
+            System.out.println(CurrentUrl);
+
+        }
+        catch(NotFoundException e)
+        {
+            System.out.println("УВАГА! Виникла помилка при перевірці сторінки Партнери" );
+        }
+
+
+
+
+
+
+    }
 
 
 
