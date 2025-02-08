@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ChangeRole
 {
-    public void UseClientRole(WebDriver driver, WebDriverWait wait, int secondsToWait)
+    public static  void UseClientRole(WebDriver driver, WebDriverWait wait, int secondsToWait)
     {
         try
         {

@@ -8,12 +8,18 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
 
 public class ClientCabinet
 {
 
     public void BuyMaoTransactions(WebDriver driver, WebDriverWait wait)
     {
+        driver.get(Credentials.Environment);
+        AuthFileKey.AuthWithTestKndpKey(driver, wait, Credentials.PassToKeyForTestOrg, Credentials.WayToKeyForTestOrg);
+        ChangeRole.UseClientRole(driver, wait, 10);
+        String IdRequest;
+
         try
         {
             OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.SineActModalWind,20);
@@ -23,7 +29,6 @@ public class ClientCabinet
         {
             System.out.println("У Вас в системі відсутні Акти або Заяви приєднання що вимагають підписання");
         }
-
 
         OlsSccMeths.FindByCssAndClick(OlsVarables.ArtOfficeLicenseBlockCss, driver);
 
@@ -56,6 +61,12 @@ public class ClientCabinet
         OlsSccMeths.FindByCssAndClear(driver, OlsVarables.Step11ogrNameInput);
 
         OlsSccMeths.FindByCssAndSet(OlsVarables.Step11ogrNameInput, driver,OlsVarables.Step1OrgName);
+
+
+        IdRequest=OlsSccMeths.FindAndGetTextByCss(driver, OlsVarables.Step11IdReuqest);
+
+//        Не забудь удалить !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        System.out.println("Заказ номер - "+IdRequest);
 
         OlsSccMeths.FindByCssAndClick(OlsVarables.Step11ButtonNextStep, driver);
 
@@ -199,23 +210,16 @@ public class ClientCabinet
             OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.Step33ViewModalCheckClientSlotAppear, 60);
             try
             {
-                WebElement modalWindow = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".modal-dialog")));
-                WebElement frameElement = modalWindow.findElement(By.tagName("iframe"));
+                wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".modal-dialog")));
+                WebElement frameElement = driver.findElement(By.cssSelector(OlsVarables.Step33ViewModalFrame));
                 driver.switchTo().frame(frameElement);
                 OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.Step33ViewModalCheckClientTextZayavaPriednannyaApper, 60);
                 System.out.println("- Бланк заяви приєднання відображається успішно.");
 
-                System.out.println("- Перевірка заголовка друкованої форми ");
-                OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.Step33CheckTextZayavaPriednannya, 60);
-                OlsSccMeths.FindByCssAndCheckText(driver, OlsVarables.Step33CheckTextZayavaPriednannya, "ЗАЯВА-ПРИЄДНАННЯ");
 
-
-
-
-
-
-
-                driver.switchTo().defaultContent();
+                OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.Step33ViewModalFrameHeaderXpath, 60);
+                //              Перевірки бланку Заяви приєднання
+                RequestDocument.CheckHeeder(driver, OlsVarables.Step33ViewModalFrameHeaderXpath,IdRequest, OlsVarables.CodeEdrpouForYOV12);
             }
             catch(TimeoutException t)
             {
@@ -227,12 +231,15 @@ public class ClientCabinet
             System.out.println("При перешляді заяви приєднання, модальне вікно перегляду не відобажається");
         }
 
+
+        driver.switchTo().defaultContent();
+
         OlsSccMeths.WaitingElementToBePresentOnThePage(driver, OlsVarables.Step33ViewModalViewDocCloseButton, 30  );
+        OlsSccMeths.FindByCssAndClick(OlsVarables.Step33ViewModalViewDocCloseButton,driver);
 
+        System.out.println("мы добрались сюда)))1");
 
-
-
-        System.out.println("мы добрались сюда)))");
+        System.out.println("мы добрались сюда)))2");
 
 
 

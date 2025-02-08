@@ -48,6 +48,7 @@ public class OlsVarables
     public static String AddTrinsactionMaoCountOfDocsToBy="div.text-left.input-group span.input-group-addon:nth-child(2)";
     public static String MinusTrinsactionMaoCountOfDocsToBy="div.text-left.input-group span.input-group-addon:nth-child(3)";
     public static String Step11ogrNameInput="div.col-xs-12>input#orderCreateModel_OrgName";
+    public static String Step11IdReuqest="div.col-xs-12>input#orderCreateModel_OrgName";
     public static String Step11ButtonNextStep="footer.panel-footer.text-center.bg-light.lter button.btn.btn-success.btn-next.ng-binding";
     public static String Step21EdrpouCode="div[data-ng-show='step2Model.Request.SubjectType == 1'] div.form-group.m-b-sm div.col-xs-12.col-sm-8.col-lg-8:nth-child(2) label.control-label.ng-binding";
     public static String Step21OrgName="div[data-ng-show='step2Model.Request.SubjectType == 1 || step2Model.Request.SubjectType == 3'] div.form-group.m-b-sm div.col-xs-12.col-sm-8.col-lg-8:nth-child(2) label.control-label.ng-binding";
@@ -85,8 +86,12 @@ public class OlsVarables
     public static String Step33ModalWarningForPaymentOkButton="div.modal-footer button.btn.btn-primary";
     public static String Step33ViewDocButton="tbody tr:nth-child(1) td:nth-child(3) a.doc-btn:nth-child(3) i.fa.fa-eye.fa-fw";
     public static String Step33ViewModalCheckClientSlotAppear="div[data-ng-if='documentModel.State !== 1'] div.text-center.panel.bg-black.group-name-panel";
+    public static String Step33ViewModalFrame="iframe#preview";
+    public static String Step33ViewModalFrameHeaderXpath="//span[@role='presentation' and @dir='ltr' and contains(text(), 'ЗАЯВА')]";
+
+
     public static String Step33ViewModalCheckClientTextZayavaPriednannyaApper="div#viewerContainer";
-    public static String Step33ViewModalViewDocCloseButton="div.modal-footer.ng-scope button.btn.btn-default.ng-scope";
+    public static String Step33ViewModalViewDocCloseButton="div.modal-footer.ng-scope>button.btn.btn-default.ng-scope";
 
 //    locators in a fame
     public static String Step33CheckTextZayavaPriednannya="div.textLayer div[style='left: 270.538px; top: 26.0494px; font-size: 11.6404px; font-family: sans-serif; transform: scaleX(1.02716);']";

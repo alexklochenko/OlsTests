@@ -3,11 +3,18 @@ package OLS;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javax.swing.*;
+import java.awt.*;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 
 public class CheckMainPage {
 
@@ -93,15 +100,19 @@ public class CheckMainPage {
         try {
             OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarFoeCryptoTest.CookysOkButton, 10);
             OlsSccMeths.FindByCssAndClick(OlsVarFoeCryptoTest.CookysOkButton, driver);
-        } catch (TimeoutException e) {
+        }
+        catch (TimeoutException e)
+        {
             System.out.println(" - Погодження з використанням політики кукіс не потребувало");
         }
 
         OlsSccMeths.FindByCssAndClick(OlsVarMainPage.MainHeaderButton, driver);
 
-        try {
+        try
+        {
             OlsSccMeths.WaitingElementToBePresentOnThePage(driver, OlsVarMainPage.CheckLogoOnMainPage, 10);
-        } catch (TimeoutException e) {
+        } catch (TimeoutException e)
+        {
             System.out.println("Очікуваний елемент не зявився на екрані");
         }
         OlsSccMeths.FindByCssAndClick(OlsVarMainPage.AboutAsButtonOnMain, driver);
@@ -256,13 +267,151 @@ public class CheckMainPage {
             driver.switchTo().window(array.get(array.size()-1));
 
             String CurrentUrl=driver.getCurrentUrl();
-            System.out.println(CurrentUrl);
+
+            if (CurrentUrl.equals(OlsVarMainPage.ActualUrlOnPartnerPage))
+            {
+                System.out.println(" - Перевірка сторінки Партнери - відбулась успішно.");
+                System.out.println(" - Адреса редіректу:"+CurrentUrl);
+            }
 
         }
         catch(NotFoundException e)
         {
             System.out.println("УВАГА! Виникла помилка при перевірці сторінки Партнери" );
         }
+
+    }
+
+    public void CheckApiPage(WebDriver driver, WebDriverWait wait, JFrame frame)
+    {
+        driver.get(Credentials.Environment);
+
+        System.out.println("Логування статусів проходження тесту на сторінці API:");
+
+        try
+        {
+            OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver,OlsVarFoeCryptoTest.CookysOkButton,10 );
+            OlsSccMeths.FindByCssAndClick(OlsVarFoeCryptoTest.CookysOkButton, driver);
+        }
+        catch( TimeoutException e)
+        {
+            System.out.println(" - Погодження з використанням політики кукіс не потребувало");
+        }
+
+        OlsSccMeths.FindByCssAndClick(OlsVarMainPage.ApiButtonOnMain, driver);
+
+        ArrayList<String> array=new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(array.get(array.size()-1));
+
+        OlsSccMeths.FindAndGetTextByCss(driver, OlsVarMainPage.CheckTextAtHeaderOfApiPage);
+
+        try
+        {
+            if
+            ((OlsSccMeths.FindAndGetTextByCss(driver, OlsVarMainPage.CheckTextAtHeaderOfApiPage)).equals(OlsVarMainPage.TextAtHeaderOfApiPage))
+            {
+                System.out.println(" - Заголовок сторіки відповідає актуальному значенню: "+OlsVarMainPage.TextAtHeaderOfApiPage);
+            }
+        }
+        catch(NoSuchElementException e)
+        {
+            System.out.println(" - Заголовок сторіки відповідає актуальному значенню: "+OlsSccMeths.FindAndGetTextByCss(driver, OlsVarMainPage.CheckTextAtHeaderOfApiPage));
+        }
+
+        OlsSccMeths.FindByCssAndSendKeys(OlsVarMainPage.PibForAPIRequestForm, driver, Credentials.PibForApiForm );
+
+        OlsSccMeths.FindByCssAndSendKeys(OlsVarMainPage.EdrpouForAPIRequestForm, driver, Credentials.EdrpouPibForApiForm );
+
+        OlsSccMeths.FindByCssAndClick(OlsVarMainPage.PhoneForAPIRequestForm, driver);
+        OlsSccMeths.FindByCssAndSendKeys(OlsVarMainPage.PhoneForAPIRequestForm, driver, Credentials.PhoneForApiForm );
+
+        OlsSccMeths.FindByCssAndSendKeys(OlsVarMainPage.EmailForAPIRequestForm, driver, Credentials.EmailForApiForm );
+
+        OlsSccMeths.FindByCssAndSendKeys(OlsVarMainPage.NumOfDealForAPIRequestForm, driver, Credentials.NumOfDealForApiForm );
+
+        OlsSccMeths.FindByCssAndClick(OlsVarMainPage.CheckLinkForLawRedirect, driver);
+
+        array=new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(array.get(array.size()-1));
+
+        String reslatUrl=driver.getCurrentUrl();
+
+        if (reslatUrl.equals(OlsVarMainPage.LinkForLawRedirect))
+        {
+            System.out.println(" - Посилання до Закону України «Про захист персональних даних» успішно перевірено ");
+        }
+        else
+        {
+            System.out.println(" - !!! Посилання до Закону України «Про захист персональних даних» не відповідае очікованому ");
+        }
+
+        driver.switchTo().window(array.get(array.size()-2));
+
+        boolean checkExeptionWhenSubmit;
+        do
+        {
+            OlsSccMeths.FindByCssAndClick(OlsVarMainPage.CheckBoxAgreeWithLaw, driver);
+
+//            Scanner scanner=new Scanner(System.in);
+//            System.out.println("Увага! Необхідно ввести занчення для капчі");
+//            String captchaData=scanner.nextLine();
+
+            String captchaData = JOptionPane.showInputDialog
+                    (frame,"Увага! Необхідно ввести значення для капчі", "Капча", JOptionPane.QUESTION_MESSAGE);
+
+            if (captchaData != null || captchaData=="") {
+                System.out.println("Ви ввели: " + captchaData);
+            } else {
+                System.out.println("Відміна вводу капчі");
+                System.out.println("Тест не може бути продовжено без введення значення капчі");
+                return;
+            }
+
+            OlsSccMeths.FindByCssAndSendKeys(OlsVarMainPage.InputFildForCaptchaOnApiPage, driver, captchaData);
+
+            OlsSccMeths.FindByCssAndClick(OlsVarMainPage.SendButtonOnApiPage,driver);
+
+            try
+            {
+                OlsSccMeths.WaitingElementToBePresentOnThePage(driver, OlsVarMainPage.SubmitElementWhenYouGetAccessToApaOnApiPage, 3);
+                checkExeptionWhenSubmit=false;
+            }
+
+            catch(TimeoutException e)
+            {
+                try
+                {
+                    OlsSccMeths.WaitingElementToBePresentOnThePage(driver, OlsVarMainPage.InfoAboutWronDataForCaptchaOnApiPage, 2);
+                    checkExeptionWhenSubmit=true;
+                    System.out.println("Символи у капчі були введені не коректно. Будь ласка повторіть спробу");
+                }
+                catch(TimeoutException  t)
+                {
+                    checkExeptionWhenSubmit=false;
+                }
+            }
+        }
+        while(checkExeptionWhenSubmit==true);
+
+        try
+        {
+            OlsSccMeths.WaitingElementToBePresentOnThePage(driver, OlsVarMainPage.SubmitElementWhenYouGetAccessToApaOnApiPage, 5);
+            OlsSccMeths.FindByCssAndClick(OlsVarMainPage.ReturnOnMainPageOnApiPage,driver);
+            try
+            {
+                OlsSccMeths.WaitingElementToBePresentOnThePage(driver, OlsVarMainPage.CheckLogoOnMainPage, 10);
+                System.out.println(" - Перевірка сторінки АПІ - відбулась успішно.");
+            }
+            catch(TimeoutException e)
+            {
+                System.out.println(" - Редірект на головну сторінку відбувся безуспішно");
+            }
+        }
+        catch(TimeoutException e)
+        {
+            System.out.println("Увага!!! Текст: Дані успішно надіслані. Найближчим часом наш спеціаліст зв'яжеться з Вами для уточнення деталей запиту. Дякуємо! - не выдображаэться на сторынцы");
+        }
+
 
 
 
@@ -272,9 +421,125 @@ public class CheckMainPage {
     }
 
 
+    public void CheckCustomerPage (WebDriver driver, WebDriverWait wait)
+    {
+        driver.get(Credentials.Environment);
+
+        System.out.println("Логування статусів проходження тесту на сторінці Клієнтам:");
+
+        try
+        {
+            OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver,OlsVarFoeCryptoTest.CookysOkButton,10 );
+            OlsSccMeths.FindByCssAndClick(OlsVarFoeCryptoTest.CookysOkButton, driver);
+        }
+        catch( TimeoutException e)
+        {
+            System.out.println(" - Погодження з використанням політики кукіс не потребувало");
+        }
+
+        OlsSccMeths.FindByCssAndClick(OlsVarMainPage.CustomerButtonOnMain, driver);
+
+        OlsSccMeths.FindByCssAndClick(OlsVarMainPage.CheckYouKeyAtCustomerPage, driver);
+
+        ArrayList<String> array=new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(array.get(array.size()-1));
+
+        String CurrentUrl=driver.getCurrentUrl();
+
+        if(CurrentUrl.equals(Credentials.Environment+"/account/cryptotest"))
+        {
+            System.out.println(" - Вкладка \"Перевити ключ\" перевірена успішно. За потреби скористайтесь окремим тестом для перевірки сторінки Криптотест");
+            System.out.print("Після виклику відкрилась сторінка: "+Credentials.Environment+"/account/cryptotest");
+        }
+
+        driver.switchTo().window(array.get(array.size()-2));
+
+        OlsSccMeths.FindByCssAndClick(OlsVarMainPage.CustomerButtonOnMain, driver);
+
+        OlsSccMeths.FindByCssAndClick(OlsVarMainPage.GenerateKeyInFileAtCustomerPage, driver);
+
+        try
+        {
+            OlsSccMeths.WaitingElementToBeClickableByCss(wait,driver,OlsVarMainPage.PassToKeyAtModalGenerFileKeyAtCustomerPage, 10);
+        }
+        catch(TimeoutException e)
+        {
+            System.out.println("Увага!!! Модальне вікно \"Генерація (створення) приватного файлового ключа та заяв P10 на сертифікати\" - не відображається на екрані");
+            System.out.println("Виконання тесту перервано. Будь ласка перезапустіть тест або перевірте сторінку");
+            return;
+        }
+
+        if((OlsSccMeths.FindAndGetTextByCss(driver, OlsVarMainPage.CheckHeaderAtModalGenerFileKeyAtCustomerPage)).equals(OlsVarMainPage.TestAtHeaderAtModalGenerFileKeyAtCustomerPage))
+        {
+            System.out.println(" - Заголовок в модальному вікні генерації файлового ключа відображається валідно");
+        }
+        else
+        {
+            System.out.println("!!! Увага: Заголовок в модальному вікні генерації файлового ключа має невалідний текст");
+        }
+
+        try
+        {
+            OlsSccMeths.WaitingElementToBePresentOnThePage(driver, OlsVarMainPage.InfoTextAtModalGenerFileKeyAtCustomerPage, 2);
+            System.out.println(" - Інформативний текст в модальному вікні генерації файлового ключа відображається валідно");
+        }
+        catch(TimeoutException e)
+        {
+            System.out.println("!!! Увага: Інформативний текст відсутній в модальному вікні генерації файлового ключа");
+        }
+
+        OlsSccMeths.FindByCssAndSendKeys(OlsVarMainPage.PassToKeyAtModalGenerFileKeyAtCustomerPage, driver, "test");
+
+        OlsSccMeths.FindByCssAndSendKeys(OlsVarMainPage.ConfirmPassToKeyAtModalGenerFileKeyAtCustomerPage, driver, "test");
+
+        OlsSccMeths.FindByCssAndClick(OlsVarMainPage.AddParamsAtModalGenerFileKeyAtCustomerPage, driver);
+
+        String SignKeyLenth=OlsSccMeths.FindAndGetTextByCss(driver, OlsVarMainPage.SignKeyLenthAtModalGenerFileKeyAtCustomerPage );
+        System.out.println(" - Довжина ключа підпису (ДСТУ 4145-2002): - "+SignKeyLenth);
+
+        String EncryptKeyLenth=OlsSccMeths.FindAndGetTextByCss(driver, OlsVarMainPage.EncryptKeyLenthAtModalGenerFileKeyAtCustomerPage );
+        System.out.println(" - Довжина ключа протоколу розподілу (Д-Г в гр. точок ЕК): - "+EncryptKeyLenth);
 
 
 
+        OlsSccMeths.FindByCssAndClick(OlsVarMainPage.GenerateButtonAtModalGenerFileKeyAtCustomerPage, driver);
+
+
+
+
+        try
+        {
+            try
+            {
+                System.out.println("Очікування 7 секунд: Початок");
+                OlsSccMeths.WaitingElementToBePresentOnThePage(driver, "test", 8);
+            }
+            catch(TimeoutException e)
+            {
+                System.out.println("Очікування 7 секунд: Закінчення");
+            }
+            OlsSccMeths.WaitingElementToBePresentOnThePage(driver, OlsVarMainPage.ResaltModalAfterGenerFileKeyAtCustomerPage, 5);
+            String tempTextTitle=OlsSccMeths.FindAndGetTextByCss(driver, OlsVarMainPage.TitleAtResaltModalAfterGenerFileKeyAtCustomerPage);
+            System.out.println( tempTextTitle);
+            OlsSccMeths.FindByCssAndClick(OlsVarMainPage.AcceptButtonAtResaltModalAfterGenerFileKeyAtCustomerPage, driver);
+            System.out.println("Ключ та п10-ті, експортовано на ваш ПК");
+            System.out.println("Будь ласка перевірте теку: "+Credentials.DirectForSavingFiles);
+        }
+
+        catch (TimeoutException e)
+        {
+            System.out.println("Увага! Модальне вікно, з інформацією про успішне завантаження ключа та П10- не відображеється. Необхідно виконати ретест або перевірити через UI");
+        }
+        catch (NoSuchElementException e)
+        {
+            System.out.println("Увага! Щось пішло не так. Потрібно виконати ретест.");
+        }
+
+
+
+
+
+    }
 
 
 

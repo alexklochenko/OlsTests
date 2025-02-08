@@ -6,13 +6,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javax.swing.*;
 import java.sql.SQLOutput;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Сryptotest {
-    public  void СryptotestWithFileKey(WebDriver driver, WebDriverWait wait){
+    public  void СryptoTestWithFileKey(WebDriver driver, WebDriverWait wait, JFrame frame){
 
         driver.get(Credentials.Environment);
 
@@ -93,10 +94,21 @@ public class Сryptotest {
 
             OlsSccMeths.FindByCssAndClick(OlsVarFoeCryptoTest.CheckBoxArgeement, driver);
 
-            Scanner scanner=new Scanner(System.in);
-            System.out.println("Введіть значення капчі для продовження тесту та натисніть Ентр:");
-            String captcha=scanner.nextLine();
+//            Scanner scanner=new Scanner(System.in);
+//            System.out.println("Введіть значення капчі для продовження тесту та натисніть Ентр:");
+//            String captcha=scanner.nextLine();
 
+            String captcha= JOptionPane.showInputDialog(frame, "Введіть значення капчі для продовження тесту та натисніть Ентр:", "Каптча", JOptionPane.WARNING_MESSAGE );
+            if(captcha!=null)
+            {
+                System.out.println("Ви ввели: ");
+            }
+            else
+            {
+                System.out.println("Відміна вводу капчі");
+                System.out.println("Тест не може бути продовжено без введення значення капчі");
+                return;
+            }
             OlsSccMeths.FindByCssAndSendKeys(OlsVarFoeCryptoTest.InputForCaptcha, driver, captcha);
 
             OlsSccMeths.FindByCssAndClick(OlsVarFoeCryptoTest.ButtonSendToBot, driver);

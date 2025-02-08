@@ -1,109 +1,125 @@
-package org.example;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
-
-import java.awt.*;
-import java.awt.datatransfer.StringSelection;
-import java.awt.event.KeyEvent;
-
-public class OLSOpen {
-
-    public static void OLStest() throws AWTException {
-        ChromeDriver driver1 = new ChromeDriver();
-        driver1.get("https://ols.am-soft.ua/");
-
-//убрать попап куки
-        WebElement WB1 = driver1.findElement(By.className("popup__btn"));
-        WB1.click();
-
-//найти и нажать кнопку Войти
-        WebElement WB2 = driver1.findElement(By.xpath("/html/body/header/div[3]"));
-        WB2.click();
-
-//найти и нажать Файловий ключ
-        WB2 = driver1.findElement(By.xpath("/html/body/header/div[3]/ul/li[1]"));
-        WB2.click();
-
-//найти и нажать кнопку Криптотест
-        WB2 = driver1.findElement(By.xpath("//*[@id=\"footer\"]/div[2]/div[3]/a"));
-        WB2.click();
-
-//переключемся на новій таб
-
-        ArrayList<String> tabs = new ArrayList<>(driver1.getWindowHandles());
-        driver1.switchTo().window(tabs.get(tabs.size() - 1));
-
-//находим елемент Дробдаун список КНЕДП
-        WebElement WB3 = driver1.findElement(By.xpath("//*[@id=\"acskType\"]"));
-        WB3.click();
-
-// вібераем КНЕДП
-        WebElement WB4 = driver1.findElement(By.xpath("//*[@id=\"acskType\"]/option[5]"));
-        WB4.click();
-
-//    рандомний клік для того щоб закрити випадаючий список для КНЕП
-        WB4=driver1.findElement(By.xpath("//*[@id=\"libVersion\"]"));
-        WB4.click();
-
-
-//    WebElement WB5=driver1.findElement(By.xpath("//*[@id=\"KeyFileName\"]"));
-//    WebElement WB5=driver1.findElement(By.id("KeyFileName"));
-//    WB5.click();
-
-
-//    set pass
-    WB4= driver1.findElement(By.xpath("//*[@id=\"passKeyFile\"]"));
-    WB4.sendKeys("11223377");
-
-////    click check pass
-        WB4= driver1.findElement(By.xpath("//*[@id=\"btnReadKeyFile\"]"));
-        WB4.click();
-
-
-
-//        Robot robot = new Robot();
-//        robot.delay(2000);
-//        StringSelection stringSelection = new StringSelection("C:\\Users\\oleks\\OneDrive\\Документи\\not for all\\MasterKey_FOP\\Key-6 (7).dat");
-//        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+//package OLS;
 //
-//        // Нажимаем комбинацию клавиш для вставки пути к файлу в окно
-//        robot.keyPress(KeyEvent.VK_CONTROL);
-//        robot.keyPress(KeyEvent.VK_V);
-//        robot.keyRelease(KeyEvent.VK_V);
-//        robot.keyRelease(KeyEvent.VK_CONTROL);
+//import org.openqa.selenium.Dimension;
+//import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.chrome.ChromeDriver;
+//import org.openqa.selenium.support.ui.WebDriverWait;
 //
-//        // Нажимаем клавишу Enter для выбора файла
-//        robot.keyPress(KeyEvent.VK_ENTER);
-//        robot.keyRelease(KeyEvent.VK_ENTER);
-
-
+//import java.io.PrintStream;
+//import java.time.Duration;
+//
+//import javax.swing.*;
+//import java.awt.*;
+//import java.awt.event.ActionEvent;
+//import java.awt.event.ActionListener;
 //
 //
-////Заполняєм данными поле ПИБ
-//    WebElement WB10=driver1.findElement(By.xpath("//*[@id=\"fullname\"]"));
-//    WB10.sendKeys("Клоченко Олександр Петрович");
+//public class Main
+//{
+//    @FunctionalInterface
+//    public interface Cases
+//    {
+//        void TestCase(WebDriver driver, WebDriverWait wait);
+//    }
 //
-////    set email
-//     WB10=driver1.findElement(By.xpath("//*[@id=\"email\"]"));
-//     WB10.sendKeys("test@test.ua");
+//    private static void executeWithNewDriver(Cases NewCase)
+//    {
+//        WebDriver driver = new ChromeDriver();
+//        Dimension size = new Dimension(1600, 950);
+//        driver.manage().window().setSize(size);
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//        NewCase.TestCase(driver, wait);
+//        driver.quit();
+//    }
 //
-////     set tel number
-//        WB10=driver1.findElement(By.xpath("//input[@placeholder='+38(000)000-00-00']"));
-//        WB10.sendKeys("+38(099)999-99-99");
+//    private static void addButton(JPanel panel, String buttonText, Runnable action)
+//    {
+//        JButton button = new JButton(buttonText);
+//        button.addActionListener(e -> {
+//            System.out.println("=== Выполняется: " + buttonText + " ===");
+//            action.run();
+//            System.out.println("=== Завершено: " + buttonText + " ===");
+//        });
+//        panel.add(button);
+//    }
 //
-////        set coment
-//        WB10=driver1.findElement(By.xpath("//*[@id=\"comment\"]"));
-//        WB10.sendKeys("this is my first selenium test");
+//    static class TextAreaOutputStream extends java.io.OutputStream
+//    {
+//        private final JTextArea textArea;
+//
+//        public TextAreaOutputStream(JTextArea textArea)
+//        {
+//            this.textArea = textArea;
+//        }
+//
+//        @Override
+//        public void write(int b)
+//        {
+//            SwingUtilities.invokeLater
+//                    (
+//                            () ->
+//                            {
+//                                textArea.append(String.valueOf((char) b));
+//                                textArea.setCaretPosition(textArea.getDocument().getLength());
+//                            }
+//                    );
+//        }
+//    }
 //
 //
-
-
-    }
-}
+//
+//    public static void main(String[] args) {
+//        JFrame frame = new JFrame("UI Test Form");
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        frame.setSize(800, 400);
+//        frame.setLayout(new BorderLayout());
+//
+//        JPanel buttonPanel = new JPanel();
+//        buttonPanel.setLayout(new GridLayout(0, 1));
+//        frame.add(buttonPanel, BorderLayout.WEST);
+//
+//        JTextArea consoleTextArea = new JTextArea();
+//        consoleTextArea.setEditable(false); // Консоль только для чтения
+//        consoleTextArea.setFont(new Font("Arial", Font.PLAIN, 12)); // Установка шрифта с поддержкой кириллицы
+//        consoleTextArea.setLineWrap(true); // Включаем перенос строк
+//        consoleTextArea.setWrapStyleWord(true); // Перенос по словам
+//        JScrollPane scrollPane = new JScrollPane(consoleTextArea);
+//        frame.add(scrollPane, BorderLayout.CENTER);
+//
+//        PrintStream printStream = new PrintStream(new Main.TextAreaOutputStream(consoleTextArea));
+//        System.setOut(printStream);
+//        System.setErr(printStream);
+//
+//        CheckMainPage cmp = new CheckMainPage();
+//        Сryptotest crt = new Сryptotest();
+//
+//        addButton(buttonPanel, "Check Sale Page", () -> executeWithNewDriver((driver, wait) -> cmp.CheckSalePage(driver, wait)));
+//        addButton(buttonPanel, "Check About Us Page", () -> executeWithNewDriver((driver, wait) -> cmp.CheckAboutAsPage(driver, wait)));
+//        addButton(buttonPanel, "Check Contacts Page", () -> executeWithNewDriver((driver, wait) -> cmp.CheckContactsPage(driver, wait)));
+//        addButton(buttonPanel, "Check Partner Page", () -> executeWithNewDriver((driver, wait) -> cmp.CheckPartnerPage(driver, wait)));
+//        addButton(buttonPanel, "Check API Page", () -> executeWithNewDriver((driver, wait) -> cmp.CheckApiPage(driver, wait)));
+//        addButton(buttonPanel, "Crypto Test", () -> executeWithNewDriver((driver, wait) -> crt.СryptoTestWithFileKey(driver, wait)));
+//
+//        frame.setVisible(true);
+//    }
+//
+//
+////        CheckMainPage cmp=new CheckMainPage();
+////        Сryptotest crt=new Сryptotest();
+////        executeWithNewDriver( (driver,wait)-> cmp.CheckSalePage(driver, wait));
+////        executeWithNewDriver( (driver,wait)-> cmp.CheckAboutAsPage(driver, wait));
+////        executeWithNewDriver( (driver,wait)-> cmp.CheckContactsPage(driver, wait));
+////        executeWithNewDriver( (driver,wait)-> cmp.CheckPartnerPage(driver, wait));
+////        executeWithNewDriver( (driver,wait)-> cmp.CheckApiPage(driver, wait));
+////        executeWithNewDriver((driver, wait)-> crt.СryptoTestWithFileKey(driver, wait));
+//
+////        AuthFileKey afk=new AuthFileKey();
+////        afk.AuthWithTestKndpKey(driver, wait,  Credentials.PassForTestKndpTov12Dir, Credentials.WayForKeyForTestKndpTov12Die) ;
+////        ChangeRole chr=new ChangeRole();
+////        chr.UseClientRole(driver, wait, 30);
+////        ClientCabinet bnl=new ClientCabinet();
+////        bnl.BuyMaoTransactions(driver, wait);
+////        bnl.SignMyDocs(driver, wait);
+//
+//
+//}

@@ -33,7 +33,6 @@ public class OlsVarMainPage
     public static String ContactsButtonOnMain="ul.header__links.fadeInLeft.animated li:nth-child(4)";
     public static String AdressOnContactPsge="div.container_contact__right>div:nth-of-type(1)";
     public static String SchedulerOnContactPsge="div[style='font-size: 15px; margin-bottom: 11px;']";
-
     public static String VfNumberOnContactPsge="div.container_contact__right div.contactus__contacts:nth-child(5) div.contactus__phoneNum>a";
     public static String KsNumberOnContactPsge="div.container_contact__right div.contactus__contacts:nth-child(6) div.contactus__phoneNum>a";
     public static String LifeNumberOnContactPsge="div.container_contact__right div.contactus__contacts:nth-child(7) div.contactus__phoneNum>a";
@@ -42,6 +41,40 @@ public class OlsVarMainPage
     public static String LinkToBuyOnLineOnCotactPage="a[target='_blank'][rel='noopener']";
     public static String LinkToSupportOnCotactPage="div.container_contact__right a:nth-of-type(2)";
     public static String PartnerButtonOnMain="ul.header__links.fadeInLeft.animated li.header__link:nth-of-type(5)";
+    public static String ActualUrlOnPartnerPage="https://art-zvit.com.ua/spivpratsia/";
+    public static String ApiButtonOnMain="ul.header__links.fadeInLeft.animated li.header__link:nth-of-type(6)";
+    public static String CheckTextAtHeaderOfApiPage="div.form__title>h1";
+    public static String TextAtHeaderOfApiPage="Отримати доступ до АРІ";
+    public static String PibForAPIRequestForm="div.form__input>input#FullName";
+    public static String EdrpouForAPIRequestForm="div.form__input>input#OrgCode";
+    public static String PhoneForAPIRequestForm="div.form__input>input#Phone";
+    public static String EmailForAPIRequestForm="div.form__input>input#Email";
+    public static String NumOfDealForAPIRequestForm="div.form__input>input#DogovorNumber";
+    public static String CheckBoxAgreeWithLaw="div.form__agreement>input#agreement";
+    public static String CheckLinkForLawRedirect="input#agreement~label>a";
+    public static String LinkForLawRedirect="https://zakon.rada.gov.ua/laws/show/2297-17#Text";
+    public static String InputFildForCaptchaOnApiPage="tbody>tr>td>input.dxeEditArea.dxeEditAreaSys";
+    public static String SendButtonOnApiPage="div.form__submit>input";
+    public static String InfoAboutWronDataForCaptchaOnApiPage="tr>td#captcha_TB_EC";
+    public static String SubmitElementWhenYouGetAccessToApaOnApiPage="div.form__success>span";
+    public static String ReturnOnMainPageOnApiPage="div.form__success+a";
+    public static String CustomerButtonOnMain="ul.header__links.fadeInLeft.animated li.header__link.dropdown>span.dropdown-toggle";
+    public static String CheckYouKeyAtCustomerPage="li.header__link.dropdown.open ul.dropdown-menu li:nth-of-type(1)";
+    public static String GenerateKeyInFileAtCustomerPage="li.header__link.dropdown.open ul.dropdown-menu li:nth-of-type(2)";
+    public static String GenerateKeyToTokenAtCustomerPage="li.header__link.dropdown.open ul.dropdown-menu li:nth-of-type(3)";
+    public static String PassToKeyAtModalGenerFileKeyAtCustomerPage="input#PGenKeyPassword";
+    public static String ConfirmPassToKeyAtModalGenerFileKeyAtCustomerPage="input#PKeyPasswordConfirm";
+    public static String AddParamsAtModalGenerFileKeyAtCustomerPage="div.panel.panel-default>div.panel-heading";
+    public static String SignKeyLenthAtModalGenerFileKeyAtCustomerPage="select#UAKeySpecSelect option[selected='selected']";
+    public static String EncryptKeyLenthAtModalGenerFileKeyAtCustomerPage="select#UAKEPKeySpecSelect option[selected='selected']";
+    public static String CheckHeaderAtModalGenerFileKeyAtCustomerPage="h4#privateKeyGenModalTitle";
+    public static String TestAtHeaderAtModalGenerFileKeyAtCustomerPage="Генерація (створення) приватного файлового ключа та заяв P10 на сертифікати";
+    public static String InfoTextAtModalGenerFileKeyAtCustomerPage="h5#privateKeyGenModalContentText";
+    public static String GenerateButtonAtModalGenerFileKeyAtCustomerPage="button#btnKeyGenBtn";
+    public static String ResaltModalAfterGenerFileKeyAtCustomerPage="div.modal-content";
+    public static String TitleAtResaltModalAfterGenerFileKeyAtCustomerPage="div.bootbox-body";
+    public static String AcceptButtonAtResaltModalAfterGenerFileKeyAtCustomerPage="button[data-bb-handler='ok']";
+
 
 
 

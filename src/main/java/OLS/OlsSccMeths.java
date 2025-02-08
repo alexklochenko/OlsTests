@@ -41,9 +41,9 @@ import java.time.Duration;
     public static void FindByCssAndCheckText(WebDriver driver, String locator, String CheckText)
     {
         WebElement element=driver.findElement(By.cssSelector(locator));
-        String textFronElement=element.getText();
+        String textFromElement=element.getText();
 
-        if(textFronElement.equals(CheckText))
+        if(textFromElement.equals(CheckText))
         {
             System.out.println("Перевірка відбулась успішно. Дані що відображаються на екрані - " + CheckText);
         }
@@ -74,11 +74,21 @@ import java.time.Duration;
 
     }
 
+//    FindAndGetText
     public static String FindAndGetTextByCss(WebDriver driver, String locator)
     {
         WebElement element=driver.findElement(By.cssSelector(locator));
         return element.getText();
     }
+
+    public static String FindAndGetTextByXpath(WebDriver driver, String locator)
+    {
+        WebElement element = driver.findElement(By.xpath(""));
+        return element.getText();
+    }
+
+
+
 
 //  Find Element and return value of fixed attribute
     public static String FindAndGetValueOfAttributeByCss(WebDriver driver, String locator, String attribute )

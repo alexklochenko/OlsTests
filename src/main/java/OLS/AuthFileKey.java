@@ -19,8 +19,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class AuthFileKey
 {
 
-    public void AuthWithTestKndpKey (WebDriver driver, WebDriverWait wait, String PasswordForKey, String WayToKey) {
-        driver.get("https://ols-test.am-soft.ua/ols.test");
+    public static void AuthWithTestKndpKey (WebDriver driver, WebDriverWait wait, String PasswordForKey, String WayToKey) {
+//        driver.get("https://ols-test.am-soft.ua/ols.test");
 
 //        Close Ми використовуємо Сookie
         try {
