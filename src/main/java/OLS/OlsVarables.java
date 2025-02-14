@@ -48,7 +48,7 @@ public class OlsVarables
     public static String AddTrinsactionMaoCountOfDocsToBy="div.text-left.input-group span.input-group-addon:nth-child(2)";
     public static String MinusTrinsactionMaoCountOfDocsToBy="div.text-left.input-group span.input-group-addon:nth-child(3)";
     public static String Step11ogrNameInput="div.col-xs-12>input#orderCreateModel_OrgName";
-    public static String Step11IdReuqest="div.col-xs-12>input#orderCreateModel_OrgName";
+    public static String Step11IdReuqest="div.block-folder h4.text-teal-dk.ng-binding";
     public static String Step11ButtonNextStep="footer.panel-footer.text-center.bg-light.lter button.btn.btn-success.btn-next.ng-binding";
     public static String Step21EdrpouCode="div[data-ng-show='step2Model.Request.SubjectType == 1'] div.form-group.m-b-sm div.col-xs-12.col-sm-8.col-lg-8:nth-child(2) label.control-label.ng-binding";
     public static String Step21OrgName="div[data-ng-show='step2Model.Request.SubjectType == 1 || step2Model.Request.SubjectType == 3'] div.form-group.m-b-sm div.col-xs-12.col-sm-8.col-lg-8:nth-child(2) label.control-label.ng-binding";
@@ -88,6 +88,7 @@ public class OlsVarables
     public static String Step33ViewModalCheckClientSlotAppear="div[data-ng-if='documentModel.State !== 1'] div.text-center.panel.bg-black.group-name-panel";
     public static String Step33ViewModalFrame="iframe#preview";
     public static String Step33ViewModalFrameHeaderXpath="//span[@role='presentation' and @dir='ltr' and contains(text(), 'ЗАЯВА')]";
+    public static String Step33ViewModalFrameNomCountXpath="//span[@role='presentation' and @style='left: 84.91%; top: 34.68%; font-size: calc(var(--scale-factor)*9.00px); font-family: serif; transform: scaleX(1.00025);']";
 
 
     public static String Step33ViewModalCheckClientTextZayavaPriednannyaApper="div#viewerContainer";

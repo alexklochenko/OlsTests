@@ -142,6 +142,9 @@ public class Main
         ClientCabinet bnl=new ClientCabinet();
         executeWithNewDriver((driver, wait) -> bnl.BuyMaoTransactions(driver, wait));
 
+//        Test tet=new Test();
+//        executeWithNewDriver((driver, wait) -> tet.Test1(driver, wait));
+
 
 
 //

@@ -114,12 +114,20 @@ import java.time.Duration;
 
 
 
-//    Wating Css
+//    Wating
     public static void WaitingElementToBeClickableByCss(WebDriverWait wait, WebDriver driver, String locator, int seconds)
     {
         wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(locator)));
     }
+
+
+    public static void WaitingElementToBeClickableByXpath(WebDriverWait wait, WebDriver driver, String locator, int seconds)
+    {
+        wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator)));
+    }
+
 
     public static void WaitingElementToBeInvisibilityByCss(WebDriverWait wait, WebDriver driver, String locator, int seconds)
     {
@@ -184,17 +192,5 @@ import java.time.Duration;
     }
 
 
-
-
-
-
-
-
-    //    Wating Xpath
-    public static void WaitingElementToBeClickableByXpath(WebDriverWait wait, WebDriver driver, String locator, int seconds)
-    {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator)));
-    }
 
 }

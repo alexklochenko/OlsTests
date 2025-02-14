@@ -62,11 +62,10 @@ public class ClientCabinet
 
         OlsSccMeths.FindByCssAndSet(OlsVarables.Step11ogrNameInput, driver,OlsVarables.Step1OrgName);
 
-
         IdRequest=OlsSccMeths.FindAndGetTextByCss(driver, OlsVarables.Step11IdReuqest);
 
-//        Не забудь удалить !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        System.out.println("Заказ номер - "+IdRequest);
+        System.out.println(" - Замовлення № - "+IdRequest);
+        System.out.println(" - Перший крок успішно пройдено");
 
         OlsSccMeths.FindByCssAndClick(OlsVarables.Step11ButtonNextStep, driver);
 
@@ -158,7 +157,7 @@ public class ClientCabinet
         {
             OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.Step32CheckText,60);
             String resalt=OlsSccMeths.FindByCssAndCheckTextReturnText(driver, OlsVarables.Step32CheckText, OlsVarables.Step32CheckTextValidResalt);
-            System.out.println("Text on display - "+resalt);
+            System.out.println("На екрані відображається  - "+resalt);
             if (resalt.equals("Крок 3: Завантажте необхідні документи"))
             {
                 OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.Step32CheckTextDiscription, 60);
@@ -214,12 +213,32 @@ public class ClientCabinet
                 WebElement frameElement = driver.findElement(By.cssSelector(OlsVarables.Step33ViewModalFrame));
                 driver.switchTo().frame(frameElement);
                 OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.Step33ViewModalCheckClientTextZayavaPriednannyaApper, 60);
-                System.out.println("- Бланк заяви приєднання відображається успішно.");
+                System.out.println("- Початок перевірки бланку друкованої форми документа");
+
+                //  Заголовок
+                OlsSccMeths.WaitingElementToBeClickableByXpath(wait, driver, OlsVarables.Step33ViewModalFrameHeaderXpath, 60);
+                String resultHeader=RequestDocument.CheckZayavaHeeder(driver, OlsVarables.Step33ViewModalFrameHeaderXpath,IdRequest, OlsVarables.CodeEdrpouForYOV12);
+                System.out.println("Заголовок: "+resultHeader);
+
+                // Клількість транзакцій в замовлені
+                System.out.println("test1");
+                OlsSccMeths.WaitingElementToBeClickableByXpath(wait, driver, OlsVarables.Step33ViewModalFrameNomCountXpath, 60);
+                System.out.println("test2");
+                String resultCount=RequestDocument.CheckZayavaNomCount(driver, OlsVarables.Step33ViewModalFrameNomCountXpath,"60");
+                System.out.println("test3");
+                System.out.println("Заголовок: "+resultCount);
+                System.out.println("test4");
 
 
-                OlsSccMeths.WaitingElementToBeClickableByCss(wait, driver, OlsVarables.Step33ViewModalFrameHeaderXpath, 60);
-                //              Перевірки бланку Заяви приєднання
-                RequestDocument.CheckHeeder(driver, OlsVarables.Step33ViewModalFrameHeaderXpath,IdRequest, OlsVarables.CodeEdrpouForYOV12);
+
+
+
+
+
+
+
+
+
             }
             catch(TimeoutException t)
             {
