@@ -3,26 +3,6 @@ package OLS;
 public class OlsVarables
 {
 
-    public static String OrgNameFromCert="ТОВ \"Дванадцять\"";
-    public static String CodeEdrpouForYOV12="22443355";
-    public static String OrgNameFromStep21="TOV Selenium test";
-    public static String CountOfDocsInTransactionReqest="55";
-    public static String Step1OrgName="TOV Selenium test";
-    public static String Step21PhoneNumber="991234567";
-    public static String Step21EmailMain="Selenium@test.ua";
-    public static String Step21YoAdressSetModalIndex="04111";
-    public static String Step21PostAdresssSetModalIndex="79040";
-    public static String Step21PostAdresssSetModalRegion="м. Київ";
-    public static String IPNNumberForTov12="224433551111";
-    public static String NumberOfPdvPayerForTov12="1785";
-    public static String NumberOfStpPayerForTov12="1911";
-
-    public static String ChiefPositionForTov12="Керівник ТОВ 12 Selenium";
-    public static String ChiefDrfoForTov12="1212121201";
-    public static String ChiefPibForTov12="ПІБ Керівника";
-    public static String IbanForTov12="123456789012345678901234567";
-
-
     public static String ClosePopupButton="button.popup__btn";
     public static String EnterButtonMain="button[type='button'][data-toggle='dropdown']";
     public static String DropDownAuthWithFileTypeOfKeyMain="ul.dropdown-menu[role='menu'] li a[href='/ols.test/account/authjs']";
@@ -49,7 +29,9 @@ public class OlsVarables
     public static String MinusTrinsactionMaoCountOfDocsToBy="div.text-left.input-group span.input-group-addon:nth-child(3)";
     public static String Step11ogrNameInput="div.col-xs-12>input#orderCreateModel_OrgName";
     public static String Step11IdReuqest="div.block-folder h4.text-teal-dk.ng-binding";
+    public static String Step11TotalDocCount="div.col-xs-12.col-sm-6.col-md-4.p-l-0.p-r-0.ng-scope>div.form-group.m-b-xs>div.col-xs-12>label.control-label.ng-binding";
     public static String Step11ButtonNextStep="footer.panel-footer.text-center.bg-light.lter button.btn.btn-success.btn-next.ng-binding";
+    public static String Step21ButtonBackStep="footer.panel-footer.text-center.bg-light.lter>button.btn.btn-default.btn-prev.ng-binding";
     public static String Step21EdrpouCode="div[data-ng-show='step2Model.Request.SubjectType == 1'] div.form-group.m-b-sm div.col-xs-12.col-sm-8.col-lg-8:nth-child(2) label.control-label.ng-binding";
     public static String Step21OrgName="div[data-ng-show='step2Model.Request.SubjectType == 1 || step2Model.Request.SubjectType == 3'] div.form-group.m-b-sm div.col-xs-12.col-sm-8.col-lg-8:nth-child(2) label.control-label.ng-binding";
     public static String Step21OccupType="select#step2Model_OccupType";
@@ -88,11 +70,18 @@ public class OlsVarables
     public static String Step33ViewModalCheckClientSlotAppear="div[data-ng-if='documentModel.State !== 1'] div.text-center.panel.bg-black.group-name-panel";
     public static String Step33ViewModalFrame="iframe#preview";
     public static String Step33ViewModalFrameHeaderXpath="//span[@role='presentation' and @dir='ltr' and contains(text(), 'ЗАЯВА')]";
-    public static String Step33ViewModalFrameNomCountXpath="//span[@role='presentation' and @style='left: 84.91%; top: 34.68%; font-size: calc(var(--scale-factor)*9.00px); font-family: serif; transform: scaleX(1.00025);']";
-
+    public static String Step33ViewModalFrameNomCount="div.textLayer[data-main-rotation='0']>span:nth-of-type(88)";
+    public static String Step33ViewModalFrameOrgName="div.textLayer[data-main-rotation='0']>span:nth-of-type(45)";
+    public static String Step33ViewModalFrameOrgEdrpou="div.textLayer[data-main-rotation='0']>span:nth-of-type(53)";
+    public static String Step33ViewModalFrameOrgIpn="div.textLayer[data-main-rotation='0']>span:nth-of-type(56)";
+    public static String Step33ViewModalFrameRequestPhone="div.textLayer[data-main-rotation='0']>span:nth-of-type(62)";
+    public static String Step33ViewModalFrameRequestEmail="div.textLayer[data-main-rotation='0']>span:nth-of-type(65)";
+    public static String Step33ViewModalFrameRediectMaoMainPage="a[data-element-id='9R']";
 
     public static String Step33ViewModalCheckClientTextZayavaPriednannyaApper="div#viewerContainer";
     public static String Step33ViewModalViewDocCloseButton="div.modal-footer.ng-scope>button.btn.btn-default.ng-scope";
+//    public static String Step33DownloadButton="tbody>tr:nth-of-type(1)>td:nth-of-type(3)>a:nth-of-type(1)";
+    public static String Step33DownloadButton="tbody>tr[aria-hidden='false'] td>a[data-tooltip='Зберегти на диск']";
 
 //    locators in a fame
     public static String Step33CheckTextZayavaPriednannya="div.textLayer div[style='left: 270.538px; top: 26.0494px; font-size: 11.6404px; font-family: sans-serif; transform: scaleX(1.02716);']";

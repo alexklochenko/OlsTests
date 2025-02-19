@@ -94,10 +94,6 @@ public class Сryptotest {
 
             OlsSccMeths.FindByCssAndClick(OlsVarFoeCryptoTest.CheckBoxArgeement, driver);
 
-//            Scanner scanner=new Scanner(System.in);
-//            System.out.println("Введіть значення капчі для продовження тесту та натисніть Ентр:");
-//            String captcha=scanner.nextLine();
-
             String captcha= JOptionPane.showInputDialog(frame, "Введіть значення капчі для продовження тесту та натисніть Ентр:", "Каптча", JOptionPane.WARNING_MESSAGE );
             if(captcha!=null)
             {

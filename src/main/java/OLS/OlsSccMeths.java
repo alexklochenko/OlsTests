@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -22,6 +23,14 @@ import java.time.Duration;
         element.click();
     }
 
+    public static void FindByCssAndClickWithAction(String locator, WebDriver driver)
+    {
+
+        WebElement element=driver.findElement(By.cssSelector(locator));
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element).click().perform();
+    }
+
 //    Find and Set Css
     public static void FindByCssAndSet(String locator, WebDriver driver, String data)
     {
@@ -29,7 +38,7 @@ import java.time.Duration;
         element.sendKeys(data);
     }
 
-//    Find and Click Css
+//    Find and Clear
     public static void FindByCssAndClear(WebDriver driver, String locator)
     {
         WebElement element=driver.findElement(By.cssSelector(locator));
@@ -37,7 +46,7 @@ import java.time.Duration;
 
     }
 
-    //    Find and Click Css
+    //    Find and CheckText
     public static void FindByCssAndCheckText(WebDriver driver, String locator, String CheckText)
     {
         WebElement element=driver.findElement(By.cssSelector(locator));
@@ -146,36 +155,6 @@ import java.time.Duration;
             WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(time));
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(locator)));
     }
-
-
-
-
-
-
-
-    //  Choose filefrom PC
-    public static void ChooseFileFromPC(String WayToPKey) throws AWTException
-    {
-        Robot robot = new Robot();
-        robot.delay(2000);
-        StringSelection stringSelection = new StringSelection(WayToPKey);
-        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
-
-        robot.keyPress(KeyEvent.VK_CONTROL);
-        robot.keyPress(KeyEvent.VK_V);
-        robot.keyRelease(KeyEvent.VK_V);
-        robot.keyRelease(KeyEvent.VK_CONTROL);
-
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        robot.delay(2000);
-    }
-
-
-
-
-
-
 
 // Xpath
     public static void FindByXpathAndClick(String locator, WebDriver driver)

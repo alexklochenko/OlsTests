@@ -37,6 +37,7 @@ public class Main
         prefs.put("download.default_directory", Credentials.DirectForSavingFiles);
         prefs.put("download.prompt_for_download", false);
         prefs.put("download.directory_upgrade", true);
+        prefs.put("download.default_directory", Credentials.DirectForSavingFiles);
         // Отключить системные уведомления браузера
         prefs.put("profile.default_content_setting_values.popups", 0); // Блокировать всплывающие окна
         prefs.put("profile.managed_default_content_settings.popups", 0); // Заблокировать их через управляемый профиль
@@ -98,11 +99,11 @@ public class Main
 
     public static void main(String[] args)
     {
-//        // Создаем основное окно
-//        JFrame frame = new JFrame("Автотести для проекту ОЛС");
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.setSize(800, 400);
-//        frame.setLayout(new BorderLayout());
+        // Создаем основное окно
+        JFrame frame = new JFrame("Автотести для проекту ОЛС");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(800, 400);
+        frame.setLayout(new BorderLayout());
 //
 //        // Левая панель с кнопками
 //        JPanel buttonPanel = new JPanel();
@@ -139,18 +140,18 @@ public class Main
 //        addButton(buttonPanel, "Створення замовлення на Ліцензію (МАО транзакції)", () -> executeWithNewDriver((driver, wait) -> bnl.BuyMaoTransactions(driver, wait)));
 
 
-        ClientCabinet bnl=new ClientCabinet();
-        executeWithNewDriver((driver, wait) -> bnl.BuyMaoTransactions(driver, wait));
+//        ClientCabinet bnl=new ClientCabinet();
+//        executeWithNewDriver((driver, wait) -> bnl.BuyMaoTransactions(driver, wait, frame));
 
-//        Test tet=new Test();
-//        executeWithNewDriver((driver, wait) -> tet.Test1(driver, wait));
+        Test tet=new Test();
+        executeWithNewDriver((driver, wait) -> tet.Test1(driver, wait, frame));
+
+//        CheckMainPage cmp = new CheckMainPage();
+//        executeWithNewDriver((driver, wait) -> cmp.CheckCustomerPage(driver, wait));
 
 
 
-//
-//
-//
-        // Форма остается открытой
+//          Форма остается открытой
 //        frame.setVisible(true);
 
 
@@ -158,8 +159,7 @@ public class Main
 
 
 
-//        CheckMainPage cmp = new CheckMainPage();
-//        executeWithNewDriver((driver, wait) -> cmp.CheckCustomerPage(driver, wait));
+
 
     }
 

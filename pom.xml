@@ -22,6 +22,18 @@
             <version>LATEST</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>12.2.0.jre11</version>
+        </dependency>
+
+        <dependency>
+            <groupId>dev.failsafe</groupId>
+            <artifactId>failsafe</artifactId>
+            <version>3.3.1</version> <!-- Проверь актуальную версию -->
+        </dependency>
+
 <!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine &ndash;&gt;-->
 <!--        <dependency>-->
 <!--            <groupId>org.junit.jupiter</groupId>-->

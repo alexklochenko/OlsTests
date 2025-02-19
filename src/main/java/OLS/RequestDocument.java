@@ -24,7 +24,7 @@ public class RequestDocument
     }
 
 
-    public static String CheckZayavaNomCount (WebDriver driver, String locator, String CountAtStep11)
+    public static String CheckZayavaNomCountXpath (WebDriver driver, String locator, String CountAtStep11)
     {
         WebElement element=driver.findElement(By.xpath(locator));
         String CountFromElement=element.getText();
@@ -32,15 +32,32 @@ public class RequestDocument
 
         if (CountFromElement.equals(CountFromRequest))
         {
-            System.out.println("Перевірено кількості транзакцій в замовленні  - відповідає значенням вказаним на кроці 1");
+            System.out.println("Перевірено даних на бланку в замовленны  - відповідає значенням вказаним на попередных кроках");
         }
         else
         {
-            System.out.println("Увага!!! Перевірку кількості транзакцій в замовленні - НЕ ПРОЙДЕНО");
+            System.out.println("Увага!!! Перевірку даних вказаних на бланку - НЕ ПРОЙДЕНО");
         }
         return CountFromElement;
     }
 
+
+    public static String CheckZayavaNomCountCss (WebDriver driver, String locator, String CountAtStep11)
+    {
+        WebElement element=driver.findElement(By.cssSelector(locator));
+        String CountFromElement=element.getText();
+        String CountFromRequest=CountAtStep11;
+
+        if (CountFromElement.equals(CountFromRequest))
+        {
+            System.out.println("Перевірено даних на бланку в замовленны  - відповідає значенням вказаним на попередных кроках");
+        }
+        else
+        {
+            System.out.println("Увага!!! Перевірку даних вказаних на бланку - НЕ ПРОЙДЕНО");
+        }
+        return CountFromElement;
+    }
 
 
 

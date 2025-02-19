@@ -1,6 +1,6 @@
 package OLS;
 
-import org.junit.jupiter.api.Test;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
@@ -63,7 +63,7 @@ public class AuthFileKey
 //        Get key
         OlsSccMeths.FindByCssAndClick(OlsVarables.ChooseFileFromPc, driver);
         try {
-            OlsSccMeths.ChooseFileFromPC(WayToKey);
+            WindowsHelper.ChooseFileFromPC(WayToKey);
         } catch (AWTException e) {
             System.out.println("Problem with export key-6.dat");
         }
@@ -72,7 +72,7 @@ public class AuthFileKey
 
         try
         {
-            OlsSccMeths.WaitingTextToBePresentInElementLocated(wait, driver, OlsVarables.CheckInfoFromCert,90,OlsVarables.OrgNameFromCert);
+            OlsSccMeths.WaitingTextToBePresentInElementLocated(wait, driver, OlsVarables.CheckInfoFromCert,90,Credentials.OrgNameFromCert);
             System.out.println("Дані з сертифікату в кабінеті користувача відповідают очікуваному результату");
         }
         catch(NoSuchElementException e)
